@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "eslint-config-airbnb": "^17.1.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
@@ -13,11 +12,17 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
+  "devDependencies": {
+    "docdash": "^1.0.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "jsdoc": "^3.5.5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "jsdoc": "jsdoc --configure jsdoc.conf.json --recurse --private"
   },
   "browserslist": [
     ">0.2%",
