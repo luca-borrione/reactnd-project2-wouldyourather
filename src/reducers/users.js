@@ -1,8 +1,8 @@
 // import { } from '../actions/users'
 
-export default function users (state = {}, action) {
+export default function users(state = {}, action) {
   switch (action.type) {
-    default :
+    default:
       return state;
   }
 }
