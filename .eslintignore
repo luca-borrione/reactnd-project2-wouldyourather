@@ -3,3 +3,4 @@ docs/
 public/
 scripts/
 node_modules/
+src/utils/_DATA.js
