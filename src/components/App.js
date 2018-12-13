@@ -1,19 +1,19 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LoadingBar from 'react-redux-loading';
-import { handleInitialData } from '../actions/shared';
+import Navigation from './Navigation';
+import 'semantic-ui-css/semantic.min.css';
 
 class App extends Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    loadInitialData: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { loadInitialData } = this.props;
     document.title = 'Would You Rather...?';
-    dispatch(handleInitialData());
+    loadInitialData();
   }
 
   render() {
@@ -23,17 +23,10 @@ class App extends Component {
         <LoadingBar />
         {loading === true
           ? null
-          : <div>Hello World!</div>}
+          : <Navigation />}
       </Fragment>
     );
   }
 }
 
-function mapStateToProps({ authedUser }) {
-  console.log('****** authedUser', authedUser); // eslint-disable-line
-  return {
-    loading: authedUser === null,
-  };
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

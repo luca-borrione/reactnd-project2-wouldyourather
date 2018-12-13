@@ -1,4 +1,4 @@
-export const INIT_QUESTIONS = Symbol('INIT_QUESTIONS');
+export const INIT_QUESTIONS = Symbol('questions: init');
 
 export function initQuestions(questions) {
   return {

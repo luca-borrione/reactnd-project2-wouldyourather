@@ -2,17 +2,18 @@ import { showLoading, hideLoading } from 'react-redux-loading';
 import { getInitialData } from '../utils/api';
 import { initUsers } from './users';
 import { initQuestions } from './questions';
-import { logout } from './authedUser';
+import { setBusyState, setReadyState } from './status';
 
 export function handleInitialData() {
   return (dispatch) => {
     dispatch(showLoading());
+    dispatch(setBusyState());
     return getInitialData()
       .then(({ users, questions }) => {
         dispatch(initUsers(users));
         dispatch(initQuestions(questions));
-        dispatch(logout());
         dispatch(hideLoading());
+        dispatch(setReadyState());
       });
   };
 }

@@ -1,9 +1,9 @@
-export const SET_AUTHED_USER = Symbol('SET_AUTHED_USER');
-export const LOGOUT = Symbol('LOGOUT');
+export const LOGIN = Symbol('authedUser: login');
+export const LOGOUT = Symbol('authedUser: logout');
 
 export function setAuthedUser(id) {
   return {
-    type: SET_AUTHED_USER,
+    type: LOGIN,
     id,
   };
 }

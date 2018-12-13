@@ -1,4 +1,4 @@
-export const INIT_USERS = Symbol('INIT_USERS');
+export const INIT_USERS = Symbol('users: init');
 
 export function initUsers(users) {
   return {
