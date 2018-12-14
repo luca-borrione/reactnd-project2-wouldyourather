@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../containers/PrivateRouteContainer';
-import LoginPage from './LoginPage';
+import LoginPage from '../containers/LoginPageContainer';
 import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage';
 

@@ -8,27 +8,23 @@ const PrivateRoute = ({
   component: Component,
   authedUserId,
   ...rest
-}) => {
-  console.log('>> authedUserId', authedUserId);
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        console.log('>> props', props);
-        return authedUserId !== null
-          ? (<Component {...props} />)
-          : (
-            <Redirect
-              to={{
-                pathname: '/login',
-                state: { from: props.location },
-              }}
-            />
-          );
-      }}
-    />
-  );
-};
+}) => (
+  <Route
+    {...rest}
+    render={props => (
+      authedUserId !== null
+        ? (<Component {...props} />)
+        : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: { from: props.location },
+            }}
+          />
+        ))
+      }
+  />
+);
 
 PrivateRoute.propTypes = {
   authedUserId: PropTypes.string,

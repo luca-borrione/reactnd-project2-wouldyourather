@@ -1,57 +1,86 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
-import { Select } from 'semantic-ui-react';
-// import { handleInitialData } from '../actions/shared';
-// import 'semantic-ui-css/semantic.min.css';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
+import { Button, Form, Select } from 'semantic-ui-react';
+import { User } from '../states/users';
 
 class LoginPage extends Component {
-  // static propTypes = {
-  //   dispatch: PropTypes.func.isRequired,
-  //   loading: PropTypes.bool.isRequired,
-  // };
+  static propTypes = {
+    authedUserId: PropTypes.string,
+    location: PropTypes.shape({
+      state: PropTypes.shape({
+        from: PropTypes.shape({
+          pathname: PropTypes.string.isRequired,
+        }).isRequired,
+      }),
+    }),
+    login: PropTypes.func.isRequired,
+    users: PropTypes.arrayOf(
+      PropTypes.instanceOf(User).isRequired,
+    ).isRequired,
+  };
 
-  // componentDidMount() {
-  //   const { dispatch } = this.props;
-  //   document.title = 'Would You Rather...?';
-  //   dispatch(handleInitialData());
-  // }
+  static defaultProps = {
+    authedUserId: null,
+    location: undefined,
+  };
+
+  constructor(props) {
+    super(props);
+    this.onSelect = this.onSelect.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  state = {
+    selectedUserId: null,
+  };
+
+  onSelect(event, { value }) {
+    const selectedUserId = value;
+    this.setState({ selectedUserId });
+  }
+
+  onSubmit(event) {
+    const { login } = this.props;
+    const { selectedUserId } = this.state;
+    event.preventDefault();
+    login(selectedUserId);
+  }
+
+  formatUsers = users => (
+    users.map(user => ({
+      key: user.id,
+      value: user.id,
+      text: user.name,
+      image: { src: user.avatarURL, avatar: true },
+    }))
+  );
 
   render() {
-    console.log('>> LOGIN PAGE');
-    const countryOptions = [
-      {
-        key: 'af',
-        value: 'af',
-        image: {
-          avatar: true,
-          // src: 'https://avatars.io/twitter/sarah_edo',
-          src: 'images/sarahedo.jpg',
-        },
-        text: 'Afghanistan',
-      },
-    ];
+    const { authedUserId, location, users } = this.props;
+    const { selectedUserId } = this.state;
+    const { from } = location.state || { from: { pathname: '/' } };
+
+    if (authedUserId) {
+      return <Redirect to={from} />;
+    }
 
     return (
-      <div>
-        Hello World!
+      <Form size="large" onSubmit={this.onSubmit}>
         <Select
-          placeholder="Select your country"
-          options={countryOptions}
-          // loading
-          // disabled
+          fluid
+          selection
+          options={this.formatUsers(users)}
+          placeholder="Select User"
+          loading={users.length === 0}
+          onChange={this.onSelect}
         />
-      </div>
+        <Button fluid size="large" disabled={!selectedUserId}>
+          Login
+        </Button>
+      </Form>
     );
   }
 }
 
-// function mapStateToProps({ authedUser }) {
-//   console.log('****** authedUser', authedUser); // eslint-disable-line
-//   return {
-//     loading: authedUser === null,
-//   };
-// }
-
-// export default connect(mapStateToProps)(App);
 export default LoginPage;
