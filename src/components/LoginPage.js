@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { Button, Form, Select } from 'semantic-ui-react';
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Segment,
+  Select,
+} from 'semantic-ui-react';
 import { User } from '../states/users';
 
-class LoginPage extends Component {
+class LoginForm extends Component {
   static propTypes = {
     authedUserId: PropTypes.string,
     location: PropTypes.shape({
@@ -66,21 +73,37 @@ class LoginPage extends Component {
     }
 
     return (
-      <Form size="large" onSubmit={this.onSubmit}>
-        <Select
-          fluid
-          selection
-          options={this.formatUsers(users)}
-          placeholder="Select User"
-          loading={users.length === 0}
-          onChange={this.onSelect}
-        />
-        <Button fluid size="large" disabled={!selectedUserId}>
-          Login
-        </Button>
-      </Form>
+      <Grid
+        id="login-page"
+        verticalAlign="middle"
+        textAlign="center"
+      >
+        <Grid.Column>
+          <Header as="h2" color="teal">Sign in</Header>
+          <Segment>
+            <Form size="large" onSubmit={this.onSubmit}>
+              <Select
+                fluid
+                selection
+                options={this.formatUsers(users)}
+                placeholder="Select User"
+                loading={users.length === 0}
+                onChange={this.onSelect}
+              />
+              <Button
+                color="teal"
+                fluid
+                size="large"
+                disabled={!selectedUserId}
+              >
+                Login
+              </Button>
+            </Form>
+          </Segment>
+        </Grid.Column>
+      </Grid>
     );
   }
 }
 
-export default LoginPage;
+export default LoginForm;

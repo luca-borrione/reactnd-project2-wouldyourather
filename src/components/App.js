@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import LoadingBar from 'react-redux-loading';
 import Navigation from './Navigation';
-import 'semantic-ui-css/semantic.min.css';
 
 class App extends Component {
   static propTypes = {
