@@ -8,7 +8,7 @@ body {
   background-color: #DADADA;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: Lato, sans-serif;
 }
 
 #root {
@@ -26,4 +26,17 @@ body {
 
 #login-page > .column {
   max-width: 28.125rem;
+}
+
+.sidebar ~ .pusher {
+  min-height: 100vh;
+}
+
+#topbar {
+  margin-bottom: 0;
+}
+
+#topbar ~ .dividing {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }

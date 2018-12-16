@@ -10,6 +10,7 @@ import {
   Select,
 } from 'semantic-ui-react';
 import { User } from '../states/users';
+import { COLOR } from '../constants';
 
 class LoginForm extends Component {
   static propTypes = {
@@ -67,6 +68,7 @@ class LoginForm extends Component {
     const { authedUserId, location, users } = this.props;
     const { selectedUserId } = this.state;
     const { from } = location.state || { from: { pathname: '/' } };
+    const color = COLOR.UI_GENERIC;
 
     if (authedUserId) {
       return <Redirect to={from} />;
@@ -79,7 +81,7 @@ class LoginForm extends Component {
         textAlign="center"
       >
         <Grid.Column>
-          <Header as="h2" color="teal">Sign in</Header>
+          <Header as="h2" color={color}>Sign in</Header>
           <Segment>
             <Form size="large" onSubmit={this.onSubmit}>
               <Select
@@ -91,7 +93,7 @@ class LoginForm extends Component {
                 onChange={this.onSelect}
               />
               <Button
-                color="teal"
+                color={color}
                 fluid
                 size="large"
                 disabled={!selectedUserId}

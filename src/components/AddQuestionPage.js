@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PageContainer from './pageContainers/PageContainer';
 
-class HomePage extends Component {
+class AddQuestionPage extends Component {
   render() {
     return (
       <PageContainer>
-        HOME PAGE
+        ADD QUESTION PAGE
       </PageContainer>
     );
   }
 }
 
-export default HomePage;
+export default AddQuestionPage;

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PageContainer from './pageContainers/PageContainer';
 
-class HomePage extends Component {
+class LeaderBoardPage extends Component {
   render() {
     return (
       <PageContainer>
-        HOME PAGE
+        LEADER BOARD
       </PageContainer>
     );
   }
 }
 
-export default HomePage;
+export default LeaderBoardPage;
