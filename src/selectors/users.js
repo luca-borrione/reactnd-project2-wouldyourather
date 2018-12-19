@@ -1,10 +1,7 @@
-import { createSelector } from 'reselect';
-
-const getUsersState = state => state.users;
-
-export const getUsers = createSelector(
-  getUsersState,
-  users => users.valueSeq().toArray(),
+export const getUsers = state => (
+  state.get('users').toList()
 );
 
-export default undefined;
+export const getUserById = (state, userId) => (
+  state.get('users').get(userId)
+);

@@ -1,5 +1,5 @@
-export const LOGIN = Symbol('authedUser: login');
-export const LOGOUT = Symbol('authedUser: logout');
+export const LOGIN = 'authedUserId/LOGIN';
+export const LOGOUT = 'authedUserId/LOGOUT';
 
 export const login = id => ({
   type: LOGIN,

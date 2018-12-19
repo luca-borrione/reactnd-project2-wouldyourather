@@ -2,13 +2,11 @@ import { connect } from 'react-redux';
 import App from '../components/App';
 import { BUSY_STATE } from '../states/status';
 import { handleInitialData } from '../actions/shared';
-import 'semantic-ui-css/semantic.min.css';
+import { getStatus } from '../selectors/status';
 
-function mapStateToProps({ status }) {
-  return {
-    loading: status === BUSY_STATE,
-  };
-}
+const mapStateToProps = state => ({
+  loading: getStatus(state) === BUSY_STATE,
+});
 
 const mapDispatchToProps = dispatch => ({
   loadInitialData: () => dispatch(handleInitialData()),

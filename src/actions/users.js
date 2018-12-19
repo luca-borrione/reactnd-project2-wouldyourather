@@ -1,4 +1,4 @@
-export const INIT_USERS = Symbol('users: init');
+export const INIT_USERS = 'users/INIT_USERS';
 
 export const initUsers = users => ({
   type: INIT_USERS,

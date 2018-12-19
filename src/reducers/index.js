@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux';
-import { loadingBarReducer } from 'react-redux-loading';
+import { combineReducers } from 'redux-immutable';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 import authedUserId from './authedUserId';
 import questions from './questions';
 import status from './status';

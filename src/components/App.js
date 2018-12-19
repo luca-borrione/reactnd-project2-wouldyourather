@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import LoadingBar from 'react-redux-loading';
+import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar';
 import Navigation from './Navigation';
 
 class App extends Component {

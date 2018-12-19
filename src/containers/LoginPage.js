@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import toJS from '../hoc/to-js';
 import { getAuthedUserId } from '../selectors/authedUserId';
 import { getUsers } from '../selectors/users';
 import { login } from '../actions/authedUserId';
@@ -16,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LoginPage);
+)(toJS(LoginPage));

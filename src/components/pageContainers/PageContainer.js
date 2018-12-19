@@ -1,23 +1,23 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Responsive } from 'semantic-ui-react';
-import DesktopContainer from './DesktopContainer';
-import MobileContainer from './MobileContainer';
+import PageContent from './PageContent';
+import WithSidebar from './WithSidebar';
 
 const PageContainer = (props) => {
   const { children } = props;
   return (
     <Fragment>
       <Responsive {...Responsive.onlyComputer}>
-        <DesktopContainer>{children}</DesktopContainer>
+        <PageContent {...props}>{children}</PageContent>
       </Responsive>
 
       <Responsive {...Responsive.onlyTablet}>
-        <DesktopContainer>{children}</DesktopContainer>
+        <PageContent {...props}>{children}</PageContent>
       </Responsive>
 
       <Responsive {...Responsive.onlyMobile}>
-        <MobileContainer>{children}</MobileContainer>
+        <WithSidebar {...props}>{children}</WithSidebar>
       </Responsive>
     </Fragment>
   );

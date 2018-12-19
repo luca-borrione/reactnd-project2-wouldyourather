@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Header, Menu, Sidebar } from 'semantic-ui-react';
-import TopBar from '../menuBar/TopBar';
+import { Menu, Sidebar } from 'semantic-ui-react';
+import PageContent from './PageContent';
 import NavMenuItems from '../menuBar/NavMenuItems';
-import { COLOR } from '../../constants';
 
-class MobileContainer extends Component {
+class WithSidebar extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    id: PropTypes.string,
+  };
+
+  static defaultProps = {
+    className: undefined,
+    id: undefined,
   };
 
   constructor(props) {
@@ -28,7 +34,6 @@ class MobileContainer extends Component {
   render() {
     const { sideBarVisible } = this.state;
     const { children } = this.props;
-    const color = COLOR.UI_GENERIC;
     return (
       <Sidebar.Pushable>
         <Sidebar
@@ -36,7 +41,6 @@ class MobileContainer extends Component {
           animation="overlay"
           width="thin"
           visible={sideBarVisible}
-          // icon="labeled"
           vertical
           inverted
         >
@@ -47,13 +51,13 @@ class MobileContainer extends Component {
           dimmed={sideBarVisible}
           onClick={sideBarVisible ? this.toggleSidebar : null}
         >
-          <TopBar toggleSidebar={this.toggleSidebar} />
-          <Header as="div" dividing color={color} />
-          {children}
+          <PageContent toggleSidebar={this.toggleSidebar} {...this.props}>
+            {children}
+          </PageContent>
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     );
   }
 }
 
-export default MobileContainer;
+export default WithSidebar;

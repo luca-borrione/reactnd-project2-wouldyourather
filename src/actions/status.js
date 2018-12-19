@@ -1,6 +1,6 @@
-export const SET_BUSY_STATE = Symbol('status: set busy');
-export const SET_ERROR_STATE = Symbol('status: set error');
-export const SET_READY_STATE = Symbol('status: set ready');
+export const SET_BUSY_STATE = 'status/SET_BUSY_STATE';
+export const SET_ERROR_STATE = 'status/SET_ERROR_STATE';
+export const SET_READY_STATE = 'status/SET_READY_STATE';
 
 export const setBusyState = () => ({
   type: SET_BUSY_STATE,

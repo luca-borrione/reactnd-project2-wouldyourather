@@ -28,6 +28,11 @@ body {
   max-width: 28.125rem;
 }
 
+
+/**
+ * TOPBAR AND SIDEBAR:
+ */
+
 .sidebar ~ .pusher {
   min-height: 100vh;
 }
@@ -39,4 +44,39 @@ body {
 #topbar ~ .dividing {
   margin-top: 0;
   margin-bottom: 1rem;
+}
+
+/**
+ * CARD CONTAINER:
+ */
+
+ .card-container .avatar-container {
+  text-align: center;
+  width: 7.857rem !important;
+ }
+
+ .card-container .content-container {
+  width: calc(100% - 7.857rem) !important;
+ }
+
+
+/**
+ * HOMEPAGE:
+ */
+
+#home-page .menu > .item {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+#home-page .active.tab {
+  border-color: teal;
+  border-top: 0.0714rem dashed teal;
+}
+
+.summary-card .ui.button {
+  margin-top: 1rem;
 }

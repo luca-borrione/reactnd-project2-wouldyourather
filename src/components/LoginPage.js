@@ -9,8 +9,8 @@ import {
   Segment,
   Select,
 } from 'semantic-ui-react';
-import { User } from '../states/users';
 import { COLOR } from '../constants';
+import { TUser } from '../types';
 
 class LoginForm extends Component {
   static propTypes = {
@@ -24,7 +24,7 @@ class LoginForm extends Component {
     }),
     login: PropTypes.func.isRequired,
     users: PropTypes.arrayOf(
-      PropTypes.instanceOf(User).isRequired,
+      PropTypes.shape(TUser).isRequired,
     ).isRequired,
   };
 
