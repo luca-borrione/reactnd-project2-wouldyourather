@@ -6,7 +6,7 @@ import CardContainer from '../shared/CardContainer';
 import { TQuestion, TUser } from '../../types';
 import { COLOR } from '../../constants';
 
-const QuestionListItem = ({ author, question }) => {
+const PreviewCard = ({ author, question }) => {
   const color = COLOR.UI_GENERIC;
   const header = `${author.name} asks`;
   const description = `..${question.optionOne.text}..`;
@@ -24,9 +24,9 @@ const QuestionListItem = ({ author, question }) => {
   );
 };
 
-QuestionListItem.propTypes = {
+PreviewCard.propTypes = {
   author: PropTypes.shape(TUser).isRequired,
   question: PropTypes.shape(TQuestion).isRequired,
 };
 
-export default QuestionListItem;
+export default PreviewCard;

@@ -46,21 +46,28 @@ body {
   margin-bottom: 1rem;
 }
 
+
 /**
  * CARD CONTAINER:
  */
 
- .card-container .avatar-container {
+ .card .ui.button {
+  margin-top: 1rem;
+}
+
+ .card .avatar-container {
+  display: flex !important;
+  align-items: center;
   text-align: center;
   width: 7.857rem !important;
  }
 
- .card-container .content-container {
+ .card .content-container {
   width: calc(100% - 7.857rem) !important;
  }
 
 
-/**
+/*
  * HOMEPAGE:
  */
 
@@ -77,6 +84,33 @@ body {
   border-top: 0.0714rem dashed teal;
 }
 
-.summary-card .ui.button {
-  margin-top: 1rem;
+
+
+/*
+ * POLL PAGE
+ */
+
+#poll-card {
+  margin: auto;
+}
+
+/* onlyComputer
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+  #poll-card {
+    max-width: 933px;
+  }
+} */
+
+/* onlyTablet and up */
+@media only screen and (min-width: 768px) {
+  #poll-card {
+    max-width: 49.143rem; /* 688px */
+  }
+}
+
+/* onlyMobile */
+@media only screen and (max-width: 767px) {
+  #poll-card {
+    max-width: 22.857rem; /* 320px */
+  }
 }

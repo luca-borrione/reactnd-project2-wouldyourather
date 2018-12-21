@@ -1,5 +1,5 @@
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Grid,
@@ -8,13 +8,19 @@ import {
   Segment,
 } from 'semantic-ui-react';
 
-const CardContainer = ({ avatarURL, children, header }) => (
-  <Fragment>
+const CardContainer = ({
+  avatarURL,
+  children,
+  className,
+  header,
+  id,
+}) => (
+  <div id={id} className={`${className} card`.trim()}>
     <Header as="h3" block attached="top">
       <span>{header}</span>
     </Header>
     <Segment attached>
-      <Grid className="card-container" columns={2} divided>
+      <Grid columns={2} divided>
         <Grid.Row>
           <Grid.Column className="avatar-container">
             <Image
@@ -31,13 +37,20 @@ const CardContainer = ({ avatarURL, children, header }) => (
         </Grid.Row>
       </Grid>
     </Segment>
-  </Fragment>
+  </div>
 );
 
 CardContainer.propTypes = {
   avatarURL: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
   header: PropTypes.string.isRequired,
+  id: PropTypes.string,
+};
+
+CardContainer.defaultProps = {
+  className: '',
+  id: undefined,
 };
 
 export default CardContainer;

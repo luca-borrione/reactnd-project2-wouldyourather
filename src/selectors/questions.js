@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { getAuthedUserId } from './authedUserId';
 
-const isAnswered = (question, userId) => (
+export const isAnswered = (question, userId) => (
   question.get('optionOne').get('votes').includes(userId)
   || question.get('optionTwo').get('votes').includes(userId)
 );
@@ -28,4 +28,8 @@ export const getAnsweredQuestions = createSelector(
       .sort(sortDescending)
       .toList()
   ),
+);
+
+export const getQuestionById = (state, questionId) => (
+  getQuestionsState(state).get(questionId)
 );

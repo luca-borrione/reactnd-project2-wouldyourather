@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
-import SummaryCard from '../../containers/SummaryCard';
+import PreviewCard from '../../containers/PreviewCard';
 import { TQuestion } from '../../types';
 
-const SummaryCardList = ({ questions }) => (
+const PreviewCardList = ({ questions }) => (
   <Grid stackable doubling columns={3}>
     {questions
       .map(question => (
         <Grid.Column key={question.id}>
-          <SummaryCard question={question} />
+          <PreviewCard question={question} />
         </Grid.Column>
       ))}
   </Grid>
 );
 
-SummaryCardList.propTypes = {
+PreviewCardList.propTypes = {
   questions: PropTypes.arrayOf(
     PropTypes.shape(TQuestion).isRequired,
   ).isRequired,
 };
 
-export default SummaryCardList;
+export default PreviewCardList;

@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
-import { BUSY_STATE } from '../states/status';
+import { INIT_STATE } from '../states/status';
 import { handleInitialData } from '../actions/shared';
 import { getStatus } from '../selectors/status';
 
 const mapStateToProps = state => ({
-  loading: getStatus(state) === BUSY_STATE,
+  loading: getStatus(state) === INIT_STATE,
 });
 
 const mapDispatchToProps = dispatch => ({

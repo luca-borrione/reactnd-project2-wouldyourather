@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Tab } from 'semantic-ui-react';
 import PageContainer from '../pageContainers/PageContainer';
-import SummaryCardList from './SummaryCardList';
+import PreviewCardList from './PreviewCardList';
 import { COLOR } from '../../constants';
 import { TQuestion } from '../../types';
 
@@ -23,7 +23,7 @@ class HomePage extends Component {
         menuItem: 'Unanswered Questions',
         render: () => (
           <Tab.Pane>
-            <SummaryCardList
+            <PreviewCardList
               questions={unansweredQuestions}
               altText="You answered all questions"
             />
@@ -34,7 +34,7 @@ class HomePage extends Component {
         menuItem: 'Answered Questions',
         render: () => (
           <Tab.Pane>
-            <SummaryCardList
+            <PreviewCardList
               questions={answeredQuestions}
               altText="You have not answered a question yet"
             />

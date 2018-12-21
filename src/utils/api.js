@@ -1,6 +1,7 @@
 import {
   _getUsers,
   _getQuestions,
+  _saveQuestionAnswer,
 } from './_DATA';
 
 export function getInitialData() {
@@ -12,5 +13,13 @@ export function getInitialData() {
     questions,
   }));
 }
+
+export const saveQuestionAnswer = (authedUserId, questionId, optionKey) => (
+  _saveQuestionAnswer({
+    authedUser: authedUserId,
+    qid: questionId,
+    answer: optionKey,
+  })
+);
 
 export default undefined;
