@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
-import PreviewCard from '../../containers/PreviewCard';
+import PreviewCard from '../../containers/homePage/PreviewCard';
 import { TQuestion } from '../../types';
 
 const PreviewCardList = ({ questions }) => (

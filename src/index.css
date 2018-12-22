@@ -90,9 +90,30 @@ body {
  * POLL PAGE
  */
 
-#poll-card {
+#poll-card,
+#results-card {
   margin: auto;
 }
+
+#results-card .ui.progress {
+  margin: 1.5em 0 0.5em;
+}
+
+#results-card .ui.message .content {
+  text-align: center;
+  color: #777;
+}
+
+#results-card .ui.message .circular.label {
+  position: absolute;
+  top: -1.5em;
+  right: -1em;
+}
+
+#results-card .ui.progress.hidden .bar {
+  visibility: hidden;
+}
+
 
 /* onlyComputer
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
@@ -102,15 +123,36 @@ body {
 } */
 
 /* onlyTablet and up */
+/* @media only screen and (max-width: 991px) and (min-width: 768px) { */
 @media only screen and (min-width: 768px) {
-  #poll-card {
+  #poll-card,
+  #results-card {
     max-width: 49.143rem; /* 688px */
+  }
+
+  #poll-card .avatar-container,
+  #results-card .avatar-container {
+    width: 11.857rem !important;
+  }
+
+  #poll-card .content-container,
+  #results-card .content-container {
+    width: calc(100% - 11.857rem) !important;
   }
 }
 
 /* onlyMobile */
 @media only screen and (max-width: 767px) {
-  #poll-card {
+  #poll-card,
+  #results-card {
     max-width: 22.857rem; /* 320px */
+  }
+
+  #results-card .avatar-container {
+    display: none !important;
+  }
+
+  #results-card .content-container {
+    width: 100% !important;
   }
 }

@@ -26,7 +26,7 @@ const CardContainer = ({
             <Image
               avatar
               src={avatarURL}
-              size="tiny"
+              size="small"
               centered
               verticalAlign="middle"
             />

@@ -72,16 +72,16 @@ class PollCard extends Component {
                 disabled={busy}
               />
             </Form.Field>
+            <Button
+              fluid
+              color={color}
+              disabled={value === null || busy}
+              onClick={this.handleVote}
+              loading={busy}
+            >
+                Submit
+            </Button>
           </Form>
-          <Button
-            fluid
-            color={color}
-            disabled={value === null || busy}
-            onClick={this.handleVote}
-            loading={busy}
-          >
-              Submit
-          </Button>
         </Container>
       </CardContainer>
     );
