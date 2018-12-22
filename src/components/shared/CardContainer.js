@@ -17,13 +17,24 @@ const CardContainer = ({
 }) => (
   <div id={id} className={`${className} card`.trim()}>
     <Header as="h3" block attached="top">
-      <span>{header}</span>
+      <span>
+        {header}
+        <Image
+          className="small-avatar"
+          avatar
+          src={avatarURL}
+          size="mini"
+          centered
+          verticalAlign="middle"
+        />
+      </span>
     </Header>
     <Segment attached>
       <Grid columns={2} divided>
         <Grid.Row>
           <Grid.Column className="avatar-container">
             <Image
+              className="big-avatar"
               avatar
               src={avatarURL}
               size="small"

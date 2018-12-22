@@ -25,7 +25,7 @@ body {
 }
 
 #login-page > .column {
-  max-width: 28.125rem;
+  max-width: 28.125em; /* 450px */
 }
 
 
@@ -43,7 +43,7 @@ body {
 
 #topbar ~ .dividing {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.875em; /* 14px */
 }
 
 
@@ -52,18 +52,24 @@ body {
  */
 
  .card .ui.button {
-  margin-top: 1rem;
+  margin-top: 0.875em; /* 14px */
+}
+
+.card .small-avatar {
+  float: right;
+  margin-top: -0.375em; /* 6px */
+  display: none !important;
 }
 
  .card .avatar-container {
   display: flex !important;
   align-items: center;
   text-align: center;
-  width: 7.857rem !important;
+  width: 6.875em !important; /* 110px */
  }
 
  .card .content-container {
-  width: calc(100% - 7.857rem) !important;
+  width: calc(100% - 6.875em) !important; /* 110px */
  }
 
 
@@ -81,7 +87,7 @@ body {
 
 #home-page .active.tab {
   border-color: teal;
-  border-top: 0.0714rem dashed teal;
+  border-top: 0.0625em dashed teal; /* 1px */
 }
 
 
@@ -106,7 +112,7 @@ body {
 
 #results-card .ui.message .circular.label {
   position: absolute;
-  top: -1.5em;
+  top: -1em;
   right: -1em;
 }
 
@@ -117,9 +123,7 @@ body {
 
 /* onlyComputer
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
-  #poll-card {
-    max-width: 933px;
-  }
+
 } */
 
 /* onlyTablet and up */
@@ -127,17 +131,17 @@ body {
 @media only screen and (min-width: 768px) {
   #poll-card,
   #results-card {
-    max-width: 49.143rem; /* 688px */
+    max-width: 43em; /* 688px */
   }
 
   #poll-card .avatar-container,
   #results-card .avatar-container {
-    width: 11.857rem !important;
+    width: 10.375em !important; /* 166px */
   }
 
   #poll-card .content-container,
   #results-card .content-container {
-    width: calc(100% - 11.857rem) !important;
+    width: calc(100% - 10.375em) !important; /* 166px */
   }
 }
 
@@ -145,7 +149,11 @@ body {
 @media only screen and (max-width: 767px) {
   #poll-card,
   #results-card {
-    max-width: 22.857rem; /* 320px */
+    max-width: 20em; /* 320px */
+  }
+
+  #results-card .small-avatar {
+    display: inline-block !important;
   }
 
   #results-card .avatar-container {
