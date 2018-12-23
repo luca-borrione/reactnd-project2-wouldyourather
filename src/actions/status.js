@@ -1,6 +1,7 @@
 export const SET_BUSY_STATE = 'status/SET_BUSY_STATE';
 export const SET_ERROR_STATE = 'status/SET_ERROR_STATE';
 export const SET_INIT_STATE = 'status/SET_INIT_STATE';
+export const SET_SUCCESS_STATE = 'status/SET_SUCCESS_STATE';
 export const SET_READY_STATE = 'status/SET_READY_STATE';
 
 export const setBusyState = () => ({
@@ -13,6 +14,10 @@ export const setErrorState = () => ({
 
 export const setInitState = () => ({
   type: SET_INIT_STATE,
+});
+
+export const setSuccessState = () => ({
+  type: SET_SUCCESS_STATE,
 });
 
 export const setReadyState = () => ({

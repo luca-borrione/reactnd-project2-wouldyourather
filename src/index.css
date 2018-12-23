@@ -57,7 +57,7 @@ body {
 
 .card .small-avatar {
   float: right;
-  margin-top: -0.375em; /* 6px */
+  margin-top: -0.525em; /* 6px */
   display: none !important;
 }
 
@@ -130,8 +130,9 @@ body {
 /* @media only screen and (max-width: 991px) and (min-width: 768px) { */
 @media only screen and (min-width: 768px) {
   #poll-card,
-  #results-card {
-    max-width: 43em; /* 688px */
+  #results-card,
+  #add-question-page {
+    max-width: 43em !important; /* 688px */
   }
 
   #poll-card .avatar-container,
@@ -149,18 +150,30 @@ body {
 @media only screen and (max-width: 767px) {
   #poll-card,
   #results-card {
-    max-width: 20em; /* 320px */
+    /* max-width: 20em; 320px */
   }
 
+  #poll-card .small-avatar,
   #results-card .small-avatar {
     display: inline-block !important;
   }
 
+  #poll-card .avatar-container,
   #results-card .avatar-container {
     display: none !important;
   }
 
+  #poll-card .content-container,
   #results-card .content-container {
     width: 100% !important;
   }
+}
+
+
+/*
+ * ADD QUESTION PAGE
+ */
+
+#add-question-page .ui.form .disabled.field {
+  opacity: 1;
 }

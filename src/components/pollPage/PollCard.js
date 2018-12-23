@@ -17,32 +17,34 @@ class PollCard extends Component {
     author: PropTypes.shape(TUser).isRequired,
     busy: PropTypes.bool.isRequired,
     question: PropTypes.shape(TQuestion).isRequired,
-    saveVote: PropTypes.func.isRequired,
+    setVote: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.handleVote = this.handleVote.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   state = {
-    value: null,
+    optionKey: null,
   };
 
   handleChange(e, { value }) {
-    this.setState({ value });
+    this.setState({
+      optionKey: value,
+    });
   }
 
-  handleVote() {
-    const { authedUserId, question, saveVote } = this.props;
-    const { value } = this.state;
-    saveVote(authedUserId, question.id, value);
+  handleSubmit() {
+    const { authedUserId, question, setVote } = this.props;
+    const { optionKey } = this.state;
+    setVote(authedUserId, question.id, optionKey);
   }
 
   render() {
     const { author, busy, question } = this.props;
-    const { value } = this.state;
+    const { optionKey } = this.state;
     const color = COLOR.UI_GENERIC;
     const header = `${author.name} asks`;
     const avatarURL = `../${author.avatarURL}`;
@@ -51,35 +53,31 @@ class PollCard extends Component {
       <CardContainer id="poll-card" header={header} avatarURL={avatarURL}>
         <Container>
           <Header as="h3">Would you rather...</Header>
-          <Form>
-            <Form.Field>
-              <Radio
-                label={question.optionOne.text}
-                name="radioGroup"
-                value="optionOne"
-                checked={value === 'optionOne'}
-                onChange={this.handleChange}
-                disabled={busy}
-              />
-            </Form.Field>
-            <Form.Field>
-              <Radio
-                label={question.optionTwo.text}
-                name="radioGroup"
-                value="optionTwo"
-                checked={value === 'optionTwo'}
-                onChange={this.handleChange}
-                disabled={busy}
-              />
-            </Form.Field>
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Radio
+              label={question.optionOne.text}
+              name="radioGroup"
+              value="optionOne"
+              checked={optionKey === 'optionOne'}
+              onChange={this.handleChange}
+              disabled={busy}
+            />
+            <Form.Radio
+              label={question.optionTwo.text}
+              name="radioGroup"
+              value="optionTwo"
+              checked={optionKey === 'optionTwo'}
+              onChange={this.handleChange}
+              disabled={busy}
+            />
             <Button
-              fluid
               color={color}
-              disabled={value === null || busy}
-              onClick={this.handleVote}
+              disabled={busy || !optionKey}
+              fluid
               loading={busy}
+              type="submit"
             >
-                Submit
+              Submit
             </Button>
           </Form>
         </Container>

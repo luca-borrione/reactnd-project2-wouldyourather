@@ -1,18 +1,28 @@
 import {
   _getUsers,
   _getQuestions,
+  _saveQuestion,
   _saveQuestionAnswer,
 } from './_DATA';
 
-export function getInitialData() {
-  return Promise.all([
+export const getInitialData = () => (
+  Promise.all([
     _getUsers(),
     _getQuestions(),
-  ]).then(([users, questions]) => ({
-    users,
-    questions,
-  }));
-}
+  ])
+    .then(([users, questions]) => ({
+      users,
+      questions,
+    }))
+);
+
+export const saveQuestion = (authedUserId, optionOneText, optionTwoText) => (
+  _saveQuestion({
+    author: authedUserId,
+    optionOneText,
+    optionTwoText,
+  })
+);
 
 export const saveQuestionAnswer = (authedUserId, questionId, optionKey) => (
   _saveQuestionAnswer({

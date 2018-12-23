@@ -25,7 +25,7 @@ class HomePage extends Component {
           <Tab.Pane>
             <PreviewCardList
               questions={unansweredQuestions}
-              altText="You answered all questions"
+              altText="You answered all the questions"
             />
           </Tab.Pane>
         ),
@@ -48,17 +48,15 @@ class HomePage extends Component {
     const color = COLOR.UI_GENERIC;
     return (
       <PageContainer id="home-page">
-        <Container>
-          <Tab
-            menu={{
-              color,
-              align: 'center',
-              attached: true,
-              tabular: true,
-            }}
-            panes={this.getPanes()}
-          />
-        </Container>
+        <Tab
+          menu={{
+            color,
+            align: 'center',
+            attached: true,
+            tabular: true,
+          }}
+          panes={this.getPanes()}
+        />
       </PageContainer>
     );
   }

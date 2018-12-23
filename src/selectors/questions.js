@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { getAuthedUserId } from './authedUserId';
 import { isAnswered } from './helpers';
 
-const sortDescending = (a, b) => b.timestamp - a.timestamp;
+const descending = (a, b) => b.get('timestamp') - a.get('timestamp');
 
 const getQuestionsState = state => state.get('questions');
 
@@ -11,7 +11,7 @@ export const getAnsweredQuestions = createSelector(
   (questionsState, userId) => (
     questionsState
       .filter(question => isAnswered(question, userId))
-      .sort(sortDescending)
+      .sort(descending)
       .toList()
   ),
 );
@@ -21,7 +21,7 @@ export const getUnansweredQuestions = createSelector(
   (questionsState, userId) => (
     questionsState
       .filter(question => !isAnswered(question, userId))
-      .sort(sortDescending)
+      .sort(descending)
       .toList()
   ),
 );

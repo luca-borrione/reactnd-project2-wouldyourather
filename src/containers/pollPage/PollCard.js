@@ -4,7 +4,7 @@ import { getAuthedUserId } from '../../selectors/authedUserId';
 import { getUserById } from '../../selectors/users';
 import { BUSY_STATE } from '../../states/status';
 import { getStatus } from '../../selectors/status';
-import { saveVote } from '../../actions/shared';
+import { setVote } from '../../actions/shared';
 import PollCard from '../../components/pollPage/PollCard';
 
 const mapStateToProps = (state, { question }) => ({
@@ -14,8 +14,8 @@ const mapStateToProps = (state, { question }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  saveVote: (authedUserId, questionId, optionKey) => (
-    dispatch(saveVote(authedUserId, questionId, optionKey))
+  setVote: (authedUserId, questionId, optionKey) => (
+    dispatch(setVote(authedUserId, questionId, optionKey))
   ),
 });
 

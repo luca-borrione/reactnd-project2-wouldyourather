@@ -9,7 +9,7 @@ import { COLOR } from '../../constants';
 const PreviewCard = ({ author, question }) => {
   const color = COLOR.UI_GENERIC;
   const header = `${author.name} asks`;
-  const description = `..${question.optionOne.text}..`;
+  const description = `${question.optionOne.text} or..`;
 
   return (
     <CardContainer header={header} avatarURL={author.avatarURL}>

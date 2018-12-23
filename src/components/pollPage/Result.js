@@ -9,10 +9,8 @@ const Result = ({
   text,
   voted,
 }) => {
-  const totResults = 2;
   let messageColor;
-  if ((count === overall / totResults && voted)
-    || count > overall / totResults) {
+  if (voted) {
     messageColor = COLOR.UI_GENERIC;
   }
   const className = count === 0 ? 'hidden' : '';

@@ -1,24 +1,34 @@
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
-import { getInitialData, saveQuestionAnswer } from '../utils/api';
-import { addAnswerToUser, initUsers } from './users';
-import { addUserToQuestionVotes, initQuestions } from './questions';
-import { setBusyState, setReadyState } from './status';
+import { getInitialData, saveQuestion, saveQuestionAnswer } from '../utils/api';
+import { addAnswerToUser, addQuestionToUser, initUsers } from './users';
+import { addQuestion, addUserToQuestionVotes, initQuestions } from './questions';
+import { setBusyState, setReadyState, setSuccessState } from './status';
 
-export function handleInitialData() {
-  return (dispatch) => {
-    dispatch(showLoading());
-    dispatch(setBusyState());
-    return getInitialData()
-      .then(({ users, questions }) => {
-        dispatch(initUsers(users));
-        dispatch(initQuestions(questions));
-        dispatch(hideLoading());
-        dispatch(setReadyState());
-      });
-  };
-}
+export const handleInitialData = () => (dispatch) => {
+  dispatch(showLoading());
+  dispatch(setBusyState());
+  return getInitialData()
+    .then(({ users, questions }) => {
+      dispatch(initUsers(users));
+      dispatch(initQuestions(questions));
+      dispatch(hideLoading());
+      dispatch(setReadyState());
+    });
+};
 
-export const saveVote = (authedUserId, questionId, optionKey) => (dispatch) => {
+export const setQuestion = (authedUserId, optionOneText, optionTwoText) => (dispatch) => {
+  dispatch(showLoading());
+  dispatch(setBusyState());
+  return saveQuestion(authedUserId, optionOneText, optionTwoText)
+    .then((question) => {
+      dispatch(addQuestion(question));
+      dispatch(addQuestionToUser(authedUserId, question.id));
+      dispatch(hideLoading());
+      dispatch(setSuccessState());
+    });
+};
+
+export const setVote = (authedUserId, questionId, optionKey) => (dispatch) => {
   dispatch(showLoading());
   dispatch(setBusyState());
   return saveQuestionAnswer(authedUserId, questionId, optionKey)

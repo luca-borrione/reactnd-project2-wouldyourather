@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 import TopBar from '../menuBar/TopBar';
 import { COLOR } from '../../constants';
 
@@ -13,10 +13,12 @@ const PageContent = (props) => {
   } = props;
   const color = COLOR.UI_GENERIC;
   return (
-    <div id={id} className={className}>
+    <div>
       <TopBar toggleSidebar={toggleSidebar} />
       <Header as="div" dividing color={color} />
-      {children}
+      <Container id={id} className={className}>
+        {children}
+      </Container>
     </div>
   );
 };
