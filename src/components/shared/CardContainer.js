@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Container,
   Grid,
   Header,
   Image,
@@ -43,7 +44,9 @@ const CardContainer = ({
             />
           </Grid.Column>
           <Grid.Column className="content-container">
-            {children}
+            <Container>
+              {children}
+            </Container>
           </Grid.Column>
         </Grid.Row>
       </Grid>

@@ -13,7 +13,7 @@ const NavMenuItems = () => (
     </Menu.Item>
 
     <Menu.Item as={NavLink} to="/leaderboard">
-      Leader Board
+      Leaderboard
     </Menu.Item>
   </Fragment>
 );

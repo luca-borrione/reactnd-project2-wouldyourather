@@ -5,7 +5,7 @@ import LoginPage from '../containers/LoginPage';
 import HomePage from '../containers/homePage/HomePage';
 import PollPage from '../containers/pollPage/PollPage';
 import AddQuestionPage from '../containers/AddQuestionPage';
-import LeaderBoardPage from './LeaderBoardPage';
+import LeaderboardPage from '../containers/leaderboardPage/LeaderboardPage';
 import NotFoundPage from './NotFoundPage';
 
 const Navigation = () => (
@@ -15,7 +15,7 @@ const Navigation = () => (
       <PrivateRoute exact path="/" component={HomePage} />
       <PrivateRoute path="/question/:questionId" component={PollPage} />
       <PrivateRoute path="/add" component={AddQuestionPage} />
-      <Route path="/leaderboard" component={LeaderBoardPage} />
+      <PrivateRoute path="/leaderboard" component={LeaderboardPage} />
       <Route component={NotFoundPage} />
     </Switch>
   </Router>

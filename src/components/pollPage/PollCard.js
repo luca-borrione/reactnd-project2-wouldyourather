@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Container,
-  Form,
-  Header,
-  Radio,
-} from 'semantic-ui-react';
+import { Button, Form, Header } from 'semantic-ui-react';
 import CardContainer from '../shared/CardContainer';
 import { TQuestion, TUser } from '../../types';
 import { COLOR } from '../../constants';
@@ -51,36 +45,34 @@ class PollCard extends Component {
 
     return (
       <CardContainer id="poll-card" header={header} avatarURL={avatarURL}>
-        <Container>
-          <Header as="h3">Would you rather...</Header>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Radio
-              label={question.optionOne.text}
-              name="radioGroup"
-              value="optionOne"
-              checked={optionKey === 'optionOne'}
-              onChange={this.handleChange}
-              disabled={busy}
-            />
-            <Form.Radio
-              label={question.optionTwo.text}
-              name="radioGroup"
-              value="optionTwo"
-              checked={optionKey === 'optionTwo'}
-              onChange={this.handleChange}
-              disabled={busy}
-            />
-            <Button
-              color={color}
-              disabled={busy || !optionKey}
-              fluid
-              loading={busy}
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Form>
-        </Container>
+        <Header as="h3">Would you rather...</Header>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Radio
+            label={question.optionOne.text}
+            name="radioGroup"
+            value="optionOne"
+            checked={optionKey === 'optionOne'}
+            onChange={this.handleChange}
+            disabled={busy}
+          />
+          <Form.Radio
+            label={question.optionTwo.text}
+            name="radioGroup"
+            value="optionTwo"
+            checked={optionKey === 'optionTwo'}
+            onChange={this.handleChange}
+            disabled={busy}
+          />
+          <Button
+            color={color}
+            disabled={busy || !optionKey}
+            fluid
+            loading={busy}
+            type="submit"
+          >
+            Submit
+          </Button>
+        </Form>
       </CardContainer>
     );
   }

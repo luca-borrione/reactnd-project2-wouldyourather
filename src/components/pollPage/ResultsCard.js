@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Header } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 import CardContainer from '../shared/CardContainer';
 import Result from './Result';
 import { TQuestion, TUser } from '../../types';
@@ -40,19 +40,21 @@ class ResultsCard extends Component {
     const results = this.getResults();
 
     return (
-      <CardContainer id="results-card" header={header} avatarURL={avatarURL}>
-        <Container>
-          <Header as="h3">Results:</Header>
-          {results.map(result => (
-            <Result
-              count={result.count}
-              key={result.key}
-              overall={result.overall}
-              text={result.text}
-              voted={result.voted}
-            />
-          ))}
-        </Container>
+      <CardContainer
+        avatarURL={avatarURL}
+        header={header}
+        id="results-card"
+      >
+        <Header as="h3">Results:</Header>
+        {results.map(result => (
+          <Result
+            count={result.count}
+            key={result.key}
+            overall={result.overall}
+            text={result.text}
+            voted={result.voted}
+          />
+        ))}
       </CardContainer>
     );
   }

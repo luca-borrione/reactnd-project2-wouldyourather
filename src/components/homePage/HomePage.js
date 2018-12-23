@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Tab } from 'semantic-ui-react';
+import { Tab } from 'semantic-ui-react';
 import PageContainer from '../pageContainers/PageContainer';
 import PreviewCardList from './PreviewCardList';
 import { COLOR } from '../../constants';
