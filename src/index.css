@@ -88,8 +88,8 @@ body {
 }
 
 #home-page .active.tab {
-  border-color: teal;
-  border-top: 0.0625em dashed teal; /* 1px */
+  border-color: #00b5ad; /* semantic ui teal */
+  border-top: 0.0714rem dashed #00b5ad; /* 1px, emantic ui teal */
 }
 
 
@@ -194,6 +194,11 @@ body {
   align-items: center;
 }
 
+.leader-card .avatar-container .ribbon {
+  position: absolute;
+  left: -1.071rem;
+}
+
 .leader-card .score-container {
   display: table !important;
   height: 100%;
@@ -240,6 +245,10 @@ body {
   .leader-card .table {
     font-size: 1.25em; /* 20px */
   }
+
+  .leader-card .avatar-container .ribbon {
+    top: -0.3571rem;
+  }
 }
 
 /* onlyMobile */
@@ -255,5 +264,13 @@ body {
 
   .leader-card .leader-name {
     font-size: 1.125em; /* 18px */
+  }
+
+  .leader-card .avatar-container .ribbon {
+    top: -0.5rem;
+  }
+
+  .leader-card .avatar-container .ui.tiny.image {
+    width: 65px;
   }
 }

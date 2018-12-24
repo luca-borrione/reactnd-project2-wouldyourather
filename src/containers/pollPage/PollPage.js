@@ -10,8 +10,8 @@ const mapStateToProps = (state, { match }) => {
   const question = getQuestionById(state, questionId);
   const authedUserId = getAuthedUserId(state);
   return {
-    question: getQuestionById(state, questionId),
-    isAnswered: isAnswered(question, authedUserId),
+    question,
+    isAnswered: !!question && isAnswered(question, authedUserId),
   };
 };
 

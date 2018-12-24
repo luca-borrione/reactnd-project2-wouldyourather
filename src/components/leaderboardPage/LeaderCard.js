@@ -27,6 +27,9 @@ const LeaderCard = ({
       <Grid columns={3} divided>
         <Grid.Row>
           <Grid.Column className="avatar-container">
+            {highlight && (
+              <Label as="a" color={color} ribbon>You</Label>
+            )}
             <Image
               className="big-avatar"
               avatar
