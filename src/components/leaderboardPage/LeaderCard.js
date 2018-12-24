@@ -31,7 +31,7 @@ const LeaderCard = ({
               className="big-avatar"
               avatar
               src={avatarURL}
-              size="small"
+              size="tiny"
               centered
               verticalAlign="middle"
             />

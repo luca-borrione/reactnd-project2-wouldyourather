@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Menu } from 'semantic-ui-react';
-import MyAccountMenuItem from './MyAccountMenuItem';
-import NavMenuItems from './NavMenuItems';
+import MyAccountMenuItem from '../../containers/menuBar/MyAccountMenuItem';
+import NavMenuItems from '../../containers/menuBar/NavMenuItems';
 import SidebarMenuItem from './SidebarMenuItem';
 
 const TopBar = (props) => {

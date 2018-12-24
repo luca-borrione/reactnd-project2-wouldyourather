@@ -6,7 +6,7 @@ const reducer = (state = null, action) => {
       return action.id;
 
     case LOGOUT:
-      return '';
+      return null;
 
     default:
       return state;

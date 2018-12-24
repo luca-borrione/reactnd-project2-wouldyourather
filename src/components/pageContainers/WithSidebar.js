@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Sidebar } from 'semantic-ui-react';
 import PageContent from './PageContent';
-import NavMenuItems from '../menuBar/NavMenuItems';
+import NavMenuItems from '../../containers/menuBar/NavMenuItems';
 
 class WithSidebar extends Component {
   static propTypes = {
