@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Header } from 'semantic-ui-react';
-import TopBar from '../menuBar/TopBar';
+import TopBar from '../../containers/menuBar/TopBar';
 import { COLOR } from '../../constants';
 
 const PageContent = (props) => {

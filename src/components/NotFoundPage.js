@@ -1,5 +1,5 @@
-
 import React from 'react';
+import PageContainer from './pageContainers/PageContainer';
 
 /**
  * @module
@@ -9,10 +9,12 @@ import React from 'react';
  * The user gets this when typing an unexpected location path in the browser url bar.
  */
 const NotFoundPage = () => (
-  <div className="notfound-page-wrap">
-    <h1>404</h1>
-    <h2>Not Found</h2>
-  </div>
+  <PageContainer id="notfound-page">
+    <div className="notfound-page-wrap">
+      <h1>404</h1>
+      <h2>Not Found</h2>
+    </div>
+  </PageContainer>
 );
 
 export default NotFoundPage;
