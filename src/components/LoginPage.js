@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import {
@@ -6,6 +6,7 @@ import {
   Form,
   Grid,
   Header,
+  Image,
   Segment,
   Select,
 } from 'semantic-ui-react';
@@ -81,9 +82,18 @@ class LoginForm extends Component {
         textAlign="center"
       >
         <Grid.Column>
-          <Header as="h2" color={color}>Sign in</Header>
-          <Segment>
+          <Segment attached="top" className="title" secondary>
+            <h3>Welcome to the Would You Rather App!</h3>
+            <p>Please sign in to continue</p>
+          </Segment>
+          <Segment attached className="content">
             <Form size="large" onSubmit={this.onSubmit}>
+              <Image
+                centered
+                size="small"
+                src="/images/react-redux.jpg"
+              />
+              <h3><p>Sign in</p></h3>
               <Select
                 fluid
                 selection
@@ -98,7 +108,7 @@ class LoginForm extends Component {
                 size="large"
                 disabled={!selectedUserId}
               >
-                Login
+                    Login
               </Button>
             </Form>
           </Segment>
