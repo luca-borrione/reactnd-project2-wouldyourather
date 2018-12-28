@@ -1,14 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 // Private Route concept from here: https://reacttraining.com/react-router/web/example/auth-workflow
+
+type Props = {
+  component: () => Element<any>,
+  authedUserId?: string,
+};
 
 const PrivateRoute = ({
   component: Component,
   authedUserId,
   ...rest
-}) => (
+}: Props): Element<any> => (
   <Route
     {...rest}
     render={props => (
@@ -22,14 +27,9 @@ const PrivateRoute = ({
             }}
           />
         ))
-      }
+    }
   />
 );
-
-PrivateRoute.propTypes = {
-  authedUserId: PropTypes.string,
-  component: PropTypes.func.isRequired,
-};
 
 PrivateRoute.defaultProps = {
   authedUserId: null,

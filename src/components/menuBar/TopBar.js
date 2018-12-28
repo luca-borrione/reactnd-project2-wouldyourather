@@ -1,11 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element } from 'react';
 import { Container, Menu } from 'semantic-ui-react';
 import MyAccountMenuItem from '../../containers/menuBar/MyAccountMenuItem';
 import NavMenuItems from '../../containers/menuBar/NavMenuItems';
 import SidebarMenuItem from './SidebarMenuItem';
 
-const TopBar = ({ authedUserId, toggleSidebar }) => (
+type Props = {
+  authedUserId?: string,
+  toggleSidebar?: () => void,
+};
+
+const TopBar = ({ authedUserId, toggleSidebar }: Props): Element<any> => (
   <Menu id="topbar" secondary size="large" color="teal" inverted>
     <Container>
       {toggleSidebar
@@ -15,11 +20,6 @@ const TopBar = ({ authedUserId, toggleSidebar }) => (
     </Container>
   </Menu>
 );
-
-TopBar.propTypes = {
-  authedUserId: PropTypes.string,
-  toggleSidebar: PropTypes.func,
-};
 
 TopBar.defaultProps = {
   authedUserId: null,

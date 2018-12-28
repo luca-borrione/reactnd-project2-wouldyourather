@@ -1,9 +1,13 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element, Fragment } from 'react';
 import { Menu, Responsive } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
-const NavMenuItems = ({ logout }) => (
+type Props = {
+  logout: () => void,
+};
+
+const NavMenuItems = ({ logout }: Props): Element<any> => (
   <Fragment>
     <Menu.Item as={NavLink} exact to="/">
       Home
@@ -19,14 +23,10 @@ const NavMenuItems = ({ logout }) => (
 
     <Responsive {...Responsive.onlyMobile}>
       <Menu.Item as="a" onClick={logout}>
-        Signout
+        Sign out
       </Menu.Item>
     </Responsive>
   </Fragment>
 );
-
-NavMenuItems.propTypes = {
-  logout: PropTypes.func.isRequired,
-};
 
 export default NavMenuItems;

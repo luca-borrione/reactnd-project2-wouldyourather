@@ -1,22 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { Component, type Element, type Node } from 'react';
 import { Menu, Sidebar } from 'semantic-ui-react';
 import PageContent from './PageContent';
 import NavMenuItems from '../../containers/menuBar/NavMenuItems';
 
-class WithSidebar extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    id: PropTypes.string,
-  };
+type Props = {
+  children: Node,
+  className?: string,
+  id?: string,
+};
 
+type State = {
+  sideBarVisible: boolean,
+};
+
+class WithSidebar extends Component<Props, State> {
   static defaultProps = {
     className: undefined,
     id: undefined,
   };
 
-  constructor(props) {
+  constructor(props: Props): void {
     super(props);
     this.toggleSidebar = this.toggleSidebar.bind(this);
   }
@@ -25,13 +29,15 @@ class WithSidebar extends Component {
     sideBarVisible: false,
   };
 
-  toggleSidebar() {
+  toggleSidebar: () => void;
+
+  toggleSidebar(): void {
     this.setState(currentState => ({
       sideBarVisible: !currentState.sideBarVisible,
     }));
   }
 
-  render() {
+  render(): Element<any> {
     const { sideBarVisible } = this.state;
     const { children } = this.props;
     return (

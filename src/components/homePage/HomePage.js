@@ -1,27 +1,28 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { Component, type Element } from 'react';
 import { Tab } from 'semantic-ui-react';
 import PageContainer from '../pageContainers/PageContainer';
 import PreviewCardList from './PreviewCardList';
 import { COLOR } from '../../constants';
-import { TQuestion } from '../../types';
+import { Question } from '../../types';
 
-class HomePage extends Component {
-  static propTypes = {
-    answeredQuestions: PropTypes.arrayOf(
-      PropTypes.shape(TQuestion).isRequired,
-    ).isRequired,
-    unansweredQuestions: PropTypes.arrayOf(
-      PropTypes.shape(TQuestion).isRequired,
-    ).isRequired,
-  };
+type Props = {
+  answeredQuestions: Question[],
+  unansweredQuestions: Question[],
+}
 
-  getPanes() {
+type Pane = {
+  menuItem: string,
+  render: () => Element<any>,
+};
+
+class HomePage extends Component<Props> {
+  getPanes(): Pane[] {
     const { answeredQuestions, unansweredQuestions } = this.props;
     return [
       {
         menuItem: 'Unanswered Questions',
-        render: () => (
+        render: (): Element<any> => (
           <Tab.Pane>
             <PreviewCardList
               questions={unansweredQuestions}
@@ -32,7 +33,7 @@ class HomePage extends Component {
       },
       {
         menuItem: 'Answered Questions',
-        render: () => (
+        render: (): Element<any> => (
           <Tab.Pane>
             <PreviewCardList
               questions={answeredQuestions}
@@ -44,8 +45,8 @@ class HomePage extends Component {
     ];
   }
 
-  render() {
-    const color = COLOR.UI_GENERIC;
+  render(): Element<any> {
+    const color:string = COLOR.UI_GENERIC;
     return (
       <PageContainer id="home-page">
         <Tab

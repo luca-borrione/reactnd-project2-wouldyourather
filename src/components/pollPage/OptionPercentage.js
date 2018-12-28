@@ -1,19 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element } from 'react';
 import { Label, Message, Progress } from 'semantic-ui-react';
 import { COLOR } from '../../constants';
 
-const Result = ({
+type Props = {
+  count: number,
+  overall: number,
+  text: string,
+  voted: boolean,
+};
+
+const OptionPercentage = ({
   count,
   overall,
   text,
   voted,
-}) => {
-  let messageColor;
+}: Props): Element<any> => {
+  let messageColor:string;
   if (voted) {
     messageColor = COLOR.UI_GENERIC;
   }
-  const className = count === 0 ? 'hidden' : '';
+  const className:string = count === 0 ? 'hidden' : '';
   return (
     <Message color={messageColor}>
       {voted && (
@@ -39,11 +46,4 @@ const Result = ({
   );
 };
 
-Result.propTypes = {
-  count: PropTypes.number.isRequired,
-  overall: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  voted: PropTypes.bool.isRequired,
-};
-
-export default Result;
+export default OptionPercentage;

@@ -1,61 +1,69 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+// @flow
+import React, { Component, type Element } from 'react';
+import { Redirect, type LocationShape } from 'react-router-dom';
 import {
   Button,
   Form,
+  type FormProps,
   Grid,
   Image,
   Segment,
   Select,
 } from 'semantic-ui-react';
 import { COLOR } from '../constants';
-import { TUser } from '../types';
+import { User } from '../types';
 
-class LoginForm extends Component {
-  static propTypes = {
-    authedUserId: PropTypes.string,
-    location: PropTypes.shape({
-      state: PropTypes.shape({
-        from: PropTypes.shape({
-          pathname: PropTypes.string.isRequired,
-        }).isRequired,
-      }),
-    }),
-    login: PropTypes.func.isRequired,
-    users: PropTypes.arrayOf(
-      PropTypes.shape(TUser).isRequired,
-    ).isRequired,
-  };
+type Props = {
+  authedUserId?: string,
+  location?: { state:{ from:LocationShape } },
+  login: (selectedUserId:string) => void,
+  users: User[],
+};
 
+type State = {
+  selectedUserId: string,
+};
+
+type FormattedUser = {
+  key: string,
+  value: string,
+  text: string,
+  image: { src:string, avatar:boolean },
+};
+
+interface IFormProps extends FormProps {
+  value: string,
+}
+
+class LoginForm extends Component<Props, State> {
   static defaultProps = {
     authedUserId: null,
     location: undefined,
   };
 
-  constructor(props) {
+  constructor(props:Props) {
     super(props);
     this.onSelect = this.onSelect.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
   state = {
-    selectedUserId: null,
+    selectedUserId: '',
   };
 
-  onSelect(event, { value }) {
+  onSelect = (event: SyntheticEvent<HTMLSelectElement>, { value }: IFormProps): void => {
     const selectedUserId = value;
     this.setState({ selectedUserId });
-  }
+  };
 
-  onSubmit(event) {
+  onSubmit = (event:SyntheticEvent<HTMLSelectElement>): void => {
     const { login } = this.props;
     const { selectedUserId } = this.state;
     event.preventDefault();
     login(selectedUserId);
-  }
+  };
 
-  formatUsers = users => (
+  formatUsers = (users: User[]): FormattedUser[] => (
     users.map(user => ({
       key: user.id,
       value: user.id,
@@ -64,11 +72,12 @@ class LoginForm extends Component {
     }))
   );
 
-  render() {
+  render(): Element<any> {
     const { authedUserId, location, users } = this.props;
     const { selectedUserId } = this.state;
-    const { from } = location.state || { from: { pathname: '/' } };
-    const color = COLOR.UI_GENERIC;
+
+    const { from } = location && location.state ? location.state : { from: ({ pathname: '/' }:LocationShape) };
+    const color: string = COLOR.UI_GENERIC;
 
     if (authedUserId) {
       return <Redirect to={from} />;
@@ -105,9 +114,9 @@ class LoginForm extends Component {
                 color={color}
                 fluid
                 size="large"
-                disabled={!selectedUserId}
+                disabled={selectedUserId === ''}
               >
-                    Login
+                Login
               </Button>
             </Form>
           </Segment>

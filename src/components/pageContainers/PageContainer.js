@@ -1,10 +1,14 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element, Fragment, type Node } from 'react';
 import { Responsive } from 'semantic-ui-react';
 import PageContent from './PageContent';
 import WithSidebar from './WithSidebar';
 
-const PageContainer = (props) => {
+type Props = {
+  children: Node,
+};
+
+const PageContainer = (props: Props): Element<any> => {
   const { children } = props;
   return (
     <Fragment>
@@ -21,10 +25,6 @@ const PageContainer = (props) => {
       </Responsive>
     </Fragment>
   );
-};
-
-PageContainer.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default PageContainer;

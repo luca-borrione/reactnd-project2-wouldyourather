@@ -1,13 +1,22 @@
-
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element, type Node } from 'react';
 import {
+  GridColumn,
   Container,
   Grid,
   Header,
   Image,
+  GridRow,
   Segment,
 } from 'semantic-ui-react';
+
+type Props = {
+  avatarURL: string,
+  children: Node,
+  className?: string,
+  header: string,
+  id?: string,
+};
 
 const CardContainer = ({
   avatarURL,
@@ -15,8 +24,8 @@ const CardContainer = ({
   className,
   header,
   id,
-}) => (
-  <div id={id} className={`${className} card`.trim()}>
+}: Props): Element<any> => (
+  <div id={id} className={`${className || ''} card`.trim()}>
     <Header as="h3" block attached="top">
       <span>
         {header}
@@ -32,8 +41,8 @@ const CardContainer = ({
     </Header>
     <Segment attached>
       <Grid columns={2} divided>
-        <Grid.Row>
-          <Grid.Column className="avatar-container">
+        <GridRow>
+          <GridColumn className="avatar-container">
             <Image
               className="big-avatar"
               avatar
@@ -42,25 +51,17 @@ const CardContainer = ({
               centered
               verticalAlign="middle"
             />
-          </Grid.Column>
-          <Grid.Column className="content-container">
+          </GridColumn>
+          <GridColumn className="content-container">
             <Container>
               {children}
             </Container>
-          </Grid.Column>
-        </Grid.Row>
+          </GridColumn>
+        </GridRow>
       </Grid>
     </Segment>
   </div>
 );
-
-CardContainer.propTypes = {
-  avatarURL: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  header: PropTypes.string.isRequired,
-  id: PropTypes.string,
-};
 
 CardContainer.defaultProps = {
   className: '',

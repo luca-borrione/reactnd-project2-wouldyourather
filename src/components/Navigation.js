@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import React, { type Element } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PrivateRoute from '../containers/PrivateRoute';
 import LoginPage from '../containers/LoginPage';
@@ -8,7 +9,7 @@ import AddQuestionPage from '../containers/AddQuestionPage';
 import LeaderboardPage from '../containers/leaderboardPage/LeaderboardPage';
 import NotFoundPage from './NotFoundPage';
 
-const Navigation = () => (
+const Navigation = (): Element<any> => (
   <Router>
     <Switch>
       <Route path="/login" component={LoginPage} />

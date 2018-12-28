@@ -1,10 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element } from 'react';
 import { Grid, Message } from 'semantic-ui-react';
 import PreviewCard from '../../containers/homePage/PreviewCard';
-import { TQuestion } from '../../types';
+import { Question } from '../../types';
 
-const PreviewCardList = ({ altText, questions }) => {
+type Props = {
+  altText?: string,
+  questions: Question[],
+};
+
+const PreviewCardList = ({ altText, questions }: Props): Element<any> => {
   if (questions.length === 0) {
     return (
       <Message>
@@ -22,13 +27,6 @@ const PreviewCardList = ({ altText, questions }) => {
         ))}
     </Grid>
   );
-};
-
-PreviewCardList.propTypes = {
-  altText: PropTypes.string,
-  questions: PropTypes.arrayOf(
-    PropTypes.shape(TQuestion).isRequired,
-  ).isRequired,
 };
 
 PreviewCardList.defaultProps = {

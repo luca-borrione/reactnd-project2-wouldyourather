@@ -1,18 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { Component, type Element } from 'react';
 import { Header } from 'semantic-ui-react';
 import CardContainer from '../shared/CardContainer';
-import Result from './Result';
-import { TQuestion, TUser } from '../../types';
+import OptionPercentage from './OptionPercentage';
+import { Question, User } from '../../types';
 
-class ResultsCard extends Component {
-  static propTypes = {
-    authedUserId: PropTypes.string.isRequired,
-    author: PropTypes.shape(TUser).isRequired,
-    question: PropTypes.shape(TQuestion).isRequired,
-  };
+type Props = {
+  authedUserId: string,
+  author: User,
+  question: Question,
+};
 
-  getResult(optionKey) {
+type Result = {
+  count: number,
+  key: string,
+  overall: number,
+  text: string,
+  voted: boolean,
+};
+
+class ResultsCard extends Component<Props> {
+  getResult(optionKey:string): Result {
     const { authedUserId, question } = this.props;
     return {
       count: question[optionKey].votes.length,
@@ -23,21 +31,23 @@ class ResultsCard extends Component {
     };
   }
 
-  getResults() {
+  getResults(): Result[] {
     return ['optionOne', 'optionTwo'].map(optionKey => this.getResult(optionKey));
   }
 
-  countAllVotes() {
+  countAllVotes(): number {
     const { question } = this.props;
-    return question.optionOne.votes.length
-    + question.optionTwo.votes.length;
+    return (
+      question.optionOne.votes.length
+      + question.optionTwo.votes.length
+    );
   }
 
-  render() {
+  render(): Element<any> {
     const { author } = this.props;
-    const header = `${author.name} asks`;
-    const avatarURL = `../${author.avatarURL}`;
-    const results = this.getResults();
+    const header:string = `${author.name} asks`;
+    const avatarURL:string = `../${author.avatarURL}`;
+    const results: Result[] = this.getResults();
 
     return (
       <CardContainer
@@ -47,7 +57,7 @@ class ResultsCard extends Component {
       >
         <Header as="h3">Results:</Header>
         {results.map(result => (
-          <Result
+          <OptionPercentage
             count={result.count}
             key={result.key}
             overall={result.overall}
@@ -55,6 +65,7 @@ class ResultsCard extends Component {
             voted={result.voted}
           />
         ))}
+
       </CardContainer>
     );
   }

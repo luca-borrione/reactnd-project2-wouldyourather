@@ -1,5 +1,5 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   Grid,
   Header,
@@ -10,15 +10,23 @@ import {
 } from 'semantic-ui-react';
 import { COLOR } from '../../constants';
 
+type Props = {
+  answered: number,
+  asked: number,
+  avatarURL: string,
+  highlight?: boolean,
+  name: string,
+};
+
 const LeaderCard = ({
   answered,
   asked,
   avatarURL,
   highlight,
   name,
-}) => {
-  const color = COLOR.UI_GENERIC;
-  let segmentColor;
+}: Props) => {
+  const color: string = COLOR.UI_GENERIC;
+  let segmentColor: string;
   if (highlight) {
     segmentColor = COLOR.UI_GENERIC;
   }
@@ -69,16 +77,7 @@ const LeaderCard = ({
         </Grid.Row>
       </Grid>
     </Segment>
-
   );
-};
-
-LeaderCard.propTypes = {
-  answered: PropTypes.number.isRequired,
-  asked: PropTypes.number.isRequired,
-  avatarURL: PropTypes.string.isRequired,
-  highlight: PropTypes.bool,
-  name: PropTypes.string.isRequired,
 };
 
 LeaderCard.defaultProps = {

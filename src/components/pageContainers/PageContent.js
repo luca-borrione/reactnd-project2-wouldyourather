@@ -1,16 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Node } from 'react';
 import { Container, Header } from 'semantic-ui-react';
 import TopBar from '../../containers/menuBar/TopBar';
 import { COLOR } from '../../constants';
 
-const PageContent = (props) => {
-  const {
-    children,
-    className,
-    id,
-    toggleSidebar,
-  } = props;
+type Props = {
+  children: Node,
+  className?: string,
+  id?: string,
+  toggleSidebar?: () => void,
+};
+
+const PageContent = ({
+  children,
+  className,
+  id,
+  toggleSidebar,
+}: Props) => {
   const color = COLOR.UI_GENERIC;
   return (
     <div>
@@ -21,13 +27,6 @@ const PageContent = (props) => {
       </Container>
     </div>
   );
-};
-
-PageContent.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  id: PropTypes.string,
-  toggleSidebar: PropTypes.func,
 };
 
 PageContent.defaultProps = {

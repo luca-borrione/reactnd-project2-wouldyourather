@@ -1,47 +1,60 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Button, Form, Header } from 'semantic-ui-react';
+// @flow
+import React, { Component, type Element } from 'react';
+import {
+  Button,
+  Form,
+  type FormProps,
+  Header,
+} from 'semantic-ui-react';
 import CardContainer from '../shared/CardContainer';
-import { TQuestion, TUser } from '../../types';
+import { Question, User } from '../../types';
 import { COLOR } from '../../constants';
 
-class PollCard extends Component {
-  static propTypes = {
-    authedUserId: PropTypes.string.isRequired,
-    author: PropTypes.shape(TUser).isRequired,
-    busy: PropTypes.bool.isRequired,
-    question: PropTypes.shape(TQuestion).isRequired,
-    setVote: PropTypes.func.isRequired,
-  };
+type Props = {
+  authedUserId: string,
+  author: User,
+  busy: boolean,
+  question: Question,
+  setVote: (authedUserId:string, questionId:string, optionKey:string) => void,
+};
 
-  constructor(props) {
+type State = {
+  optionKey: string,
+};
+
+interface IFormProps extends FormProps {
+  value: string,
+}
+
+class PollCard extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   state = {
-    optionKey: null,
+    optionKey: '',
   };
 
-  handleChange(e, { value }) {
+  handleChange = (event: SyntheticEvent<HTMLFormElement>, { value }: IFormProps): void => {
     this.setState({
       optionKey: value,
     });
-  }
+  };
 
-  handleSubmit() {
+  handleSubmit = (): void => {
     const { authedUserId, question, setVote } = this.props;
     const { optionKey } = this.state;
     setVote(authedUserId, question.id, optionKey);
-  }
+  };
 
-  render() {
+  render(): Element<any> {
     const { author, busy, question } = this.props;
     const { optionKey } = this.state;
-    const color = COLOR.UI_GENERIC;
-    const header = `${author.name} asks`;
-    const avatarURL = `../${author.avatarURL}`;
+    const color:string = COLOR.UI_GENERIC;
+    const header:string = `${author.name} asks`;
+    const avatarURL:string = `../${author.avatarURL}`;
 
     return (
       <CardContainer id="poll-card" header={header} avatarURL={avatarURL}>
@@ -65,7 +78,7 @@ class PollCard extends Component {
           />
           <Button
             color={color}
-            disabled={busy || !optionKey}
+            disabled={busy || optionKey === ''}
             fluid
             loading={busy}
             type="submit"

@@ -1,11 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element } from 'react';
 import { Grid } from 'semantic-ui-react';
 import PageContainer from '../pageContainers/PageContainer';
 import LeaderCard from './LeaderCard';
-import { TLeader } from '../../types';
+import { Leader } from '../../types';
 
-const LeaderboardPage = ({ authedUserId, leaders }) => (
+type Props = {
+  authedUserId: string,
+  leaders: Leader[],
+};
+
+const LeaderboardPage = ({ authedUserId, leaders }: Props): Element<any> => (
   <PageContainer id="leaderboard-page">
     <Grid
       columns={1}
@@ -26,12 +31,5 @@ const LeaderboardPage = ({ authedUserId, leaders }) => (
     </Grid>
   </PageContainer>
 );
-
-LeaderboardPage.propTypes = {
-  authedUserId: PropTypes.string.isRequired,
-  leaders: PropTypes.arrayOf(
-    PropTypes.shape(TLeader).isRequired,
-  ).isRequired,
-};
 
 export default LeaderboardPage;

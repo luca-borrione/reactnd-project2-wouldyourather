@@ -1,18 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element } from 'react';
 import { Menu, Icon } from 'semantic-ui-react';
 
-const SidebarMenuItem = (props) => {
-  const { toggle } = props;
-  return (
-    <Menu.Item onClick={toggle}>
-      <Icon name="sidebar" size="large" />
-    </Menu.Item>
-  );
+type Props = {
+  toggle: () => void,
 };
 
-SidebarMenuItem.propTypes = {
-  toggle: PropTypes.func.isRequired,
-};
+const SidebarMenuItem = ({ toggle }: Props): Element<any> => (
+  <Menu.Item onClick={toggle}>
+    <Icon name="sidebar" size="large" />
+  </Menu.Item>
+);
 
 export default SidebarMenuItem;

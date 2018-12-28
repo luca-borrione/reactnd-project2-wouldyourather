@@ -1,12 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element } from 'react';
 import {
   Image,
   Menu,
   Responsive,
 } from 'semantic-ui-react';
 
-const MyAccountMenuItem = ({ avatarURL, logout, userName }) => (
+type Props = {
+  avatarURL: string,
+  logout: () => void,
+  userName: string,
+};
+
+const MyAccountMenuItem = ({ avatarURL, logout, userName }: Props): Element<any> => (
   <Menu.Item position="right">
     <Responsive {...Responsive.onlyMobile}>
       <Image avatar src={avatarURL} spaced />
@@ -25,17 +31,11 @@ const MyAccountMenuItem = ({ avatarURL, logout, userName }) => (
             cursor: 'pointer',
           }}
         >
-          Signout
+          Logout
         </span>
       </span>
     </Responsive>
   </Menu.Item>
 );
-
-MyAccountMenuItem.propTypes = {
-  avatarURL: PropTypes.string.isRequired,
-  logout: PropTypes.func.isRequired,
-  userName: PropTypes.string.isRequired,
-};
 
 export default MyAccountMenuItem;

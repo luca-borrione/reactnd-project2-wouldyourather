@@ -1,15 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { type Element } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Header } from 'semantic-ui-react';
 import CardContainer from '../shared/CardContainer';
-import { TQuestion, TUser } from '../../types';
+import { Question, User } from '../../types';
 import { COLOR } from '../../constants';
 
-const PreviewCard = ({ author, question }) => {
-  const color = COLOR.UI_GENERIC;
-  const header = `${author.name} asks`;
-  const description = `${question.optionOne.text} or..`;
+type Props = {
+  author: User,
+  question: Question,
+};
+
+const PreviewCard = ({ author, question }: Props): Element<any> => {
+  const color: string = COLOR.UI_GENERIC;
+  const header: string = `${author.name} asks`;
+  const description: string = `${question.optionOne.text} or..`;
 
   return (
     <CardContainer
@@ -30,11 +35,6 @@ const PreviewCard = ({ author, question }) => {
       </Button>
     </CardContainer>
   );
-};
-
-PreviewCard.propTypes = {
-  author: PropTypes.shape(TUser).isRequired,
-  question: PropTypes.shape(TQuestion).isRequired,
 };
 
 export default PreviewCard;

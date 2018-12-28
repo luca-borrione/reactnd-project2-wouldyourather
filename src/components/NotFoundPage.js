@@ -1,4 +1,5 @@
-import React from 'react';
+// @flow
+import React, { type Element } from 'react';
 import PageContainer from './pageContainers/PageContainer';
 
 /**
@@ -8,7 +9,7 @@ import PageContainer from './pageContainers/PageContainer';
  * Displays a simple 404 Not Found page consisting in a green circle with text.
  * The user gets this when typing an unexpected location path in the browser url bar.
  */
-const NotFoundPage = () => (
+const NotFoundPage = (): Element<any> => (
   <PageContainer id="notfound-page">
     <div className="notfound-page-wrap">
       <h1>404</h1>

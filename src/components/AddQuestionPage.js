@@ -1,29 +1,40 @@
-import React, { Component } from 'react';
+// @flow
+import React, { Component, type Element } from 'react';
 import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import {
   Button,
   Divider,
   Form,
+  type FormProps,
   Segment,
 } from 'semantic-ui-react';
 import PageContainer from './pageContainers/PageContainer';
 import { COLOR } from '../constants';
 
-class AddQuestionPage extends Component {
-  static propTypes = {
-    authedUserId: PropTypes.string.isRequired,
-    busy: PropTypes.bool.isRequired,
-    setQuestion: PropTypes.func.isRequired,
-    success: PropTypes.bool.isRequired,
-    setReadyState: PropTypes.func.isRequired,
-  };
+type Props = {
+  authedUserId: string,
+  busy: boolean,
+  setQuestion: (authedUserId:string, optionOneText:string, optionTwoText:string) => void,
+  success: boolean,
+  setReadyState: () => void,
+};
 
-  static isEmpty(value) {
-    return value === null || value === '' || value.trim() === '';
+type State = {
+  optionOneText: string,
+  optionTwoText: string,
+};
+
+interface IFormProps extends FormProps {
+  id: string,
+  value: string,
+}
+
+class AddQuestionPage extends Component<Props, State> {
+  static isEmpty(value:string): boolean {
+    return value === '' || value.trim() === '';
   }
 
-  constructor(props) {
+  constructor(props:Props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -31,8 +42,8 @@ class AddQuestionPage extends Component {
   }
 
   state = {
-    optionOneText: null,
-    optionTwoText: null,
+    optionOneText: '',
+    optionTwoText: '',
   };
 
   componentWillUnmount() {
@@ -40,40 +51,40 @@ class AddQuestionPage extends Component {
     setReadyState();
   }
 
-  handleBlur(event) {
-    const { id, value } = event.target;
+  handleBlur = (event:SyntheticEvent<HTMLInputElement>): void => {
+    const { id, value } = (event.currentTarget: HTMLInputElement);
     const { isEmpty } = this.constructor;
     if (isEmpty(value)) {
       this.setState({
-        [id]: null,
+        [id]: '',
       });
     } else {
       this.setState({
         [id]: value.trim().replace(/\s+/g, ' '),
       });
     }
-  }
+  };
 
-  handleChange(event, { id, value }) {
+  handleChange = (event:SyntheticEvent<HTMLInputElement>, { id, value }: IFormProps): void => {
     this.setState({
       [id]: value,
     });
-  }
+  };
 
-  handleSubmit() {
+  handleSubmit = (): void => {
     const { authedUserId, setQuestion } = this.props;
     const { optionOneText, optionTwoText } = this.state;
     setQuestion(authedUserId, optionOneText, optionTwoText);
-  }
+  };
 
-  render() {
+  render(): Element<any> {
     const { busy, success } = this.props;
     const { optionOneText, optionTwoText } = this.state;
     const { isEmpty } = this.constructor;
-    const optionOneAlt = 'Enter Option One Text Here';
-    const optionTwoAlt = 'Enter Option Two Text Here';
+    const optionOneAlt:string = 'Enter Option One Text Here';
+    const optionTwoAlt:string = 'Enter Option Two Text Here';
 
-    const color = COLOR.UI_GENERIC;
+    const color:string = COLOR.UI_GENERIC;
 
     if (success) {
       return <Redirect to="/" />;
@@ -99,7 +110,7 @@ class AddQuestionPage extends Component {
               onBlur={this.handleBlur}
               onChange={this.handleChange}
               placeholder={optionOneAlt}
-              value={optionOneText || ''}
+              value={optionOneText}
             />
             <Divider horizontal>Or</Divider>
             <Form.Input
@@ -109,13 +120,15 @@ class AddQuestionPage extends Component {
               onBlur={this.handleBlur}
               onChange={this.handleChange}
               placeholder={optionTwoAlt}
-              value={optionTwoText || ''}
+              value={optionTwoText}
             />
             <Button
               color={color}
-              disabled={busy
+              disabled={
+                busy
                 || isEmpty(optionOneText)
-                || isEmpty(optionTwoText)}
+                || isEmpty(optionTwoText)
+              }
               fluid
               loading={busy}
               type="submit"

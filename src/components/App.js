@@ -1,21 +1,21 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import React, { Component, type Element, Fragment } from 'react';
 import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar';
 import Navigation from './Navigation';
 
-class App extends Component {
-  static propTypes = {
-    loadInitialData: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
-  };
+type Props = {
+  loadInitialData: () => void,
+  loading: boolean,
+};
 
-  componentDidMount() {
+class App extends Component<Props> {
+  componentDidMount(): void {
     const { loadInitialData } = this.props;
     document.title = 'Would You Rather...?';
     loadInitialData();
   }
 
-  render() {
+  render(): Element<any> {
     const { loading } = this.props;
     return (
       <Fragment>
