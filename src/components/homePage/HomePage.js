@@ -4,7 +4,7 @@ import { Tab } from 'semantic-ui-react';
 import PageContainer from '../pageContainers/PageContainer';
 import PreviewCardList from './PreviewCardList';
 import { COLOR } from '../../constants';
-import { Question } from '../../types';
+import { type Question } from '../../types';
 
 type Props = {
   answeredQuestions: Question[],
@@ -46,7 +46,7 @@ class HomePage extends Component<Props> {
   }
 
   render(): Element<any> {
-    const color:string = COLOR.UI_GENERIC;
+    const color: string = COLOR.UI_GENERIC;
     return (
       <PageContainer id="home-page">
         <Tab

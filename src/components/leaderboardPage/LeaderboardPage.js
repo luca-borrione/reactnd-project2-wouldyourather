@@ -3,7 +3,7 @@ import React, { type Element } from 'react';
 import { Grid } from 'semantic-ui-react';
 import PageContainer from '../pageContainers/PageContainer';
 import LeaderCard from './LeaderCard';
-import { Leader } from '../../types';
+import { type Leader } from '../../types';
 
 type Props = {
   authedUserId: string,

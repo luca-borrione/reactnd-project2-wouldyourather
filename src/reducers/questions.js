@@ -1,30 +1,57 @@
+// @flow
+/* eslint-disable prefer-destructuring */
+
 import { fromJS, Map } from 'immutable';
 import {
-  ADD_QUESTION,
-  ADD_USER_TO_QUESTION_VOTES,
-  INIT_QUESTIONS,
+  type QuestionsAction,
+  ADD_QUESTION, type AddQuestionPayload,
+  ADD_USER_TO_QUESTION_VOTES, type AddUserToQuestionVotesPayload,
+  INIT_QUESTIONS, type InitQuestionsPayload,
 } from '../actions/questions';
+import {
+  type QuestionMap,
+  type QuestionsMap,
+} from '../types';
 
-const reducer = (state = new Map(), action) => {
+const reducer = (state: QuestionsMap = new Map(), action: QuestionsAction) => {
   switch (action.type) {
     case ADD_QUESTION: {
-      const { question } = action;
-      return state.merge({ [question.id]: fromJS(question) });
+      const payload: AddQuestionPayload | void = action.payload;
+      if (payload) {
+        const { question } = payload;
+        const questionMap: QuestionMap = ((fromJS(question): any): QuestionMap);
+        // $FlowSuppressError: The following line is borked because of https://github.com/facebook/flow/issues/7309
+        return state.merge({ [question.id]: questionMap });
+      }
+      throw new Error('unexpected empty payload');
     }
 
     case ADD_USER_TO_QUESTION_VOTES: {
-      const { authedUserId, questionId, optionKey } = action;
-      return state.mergeIn(
-        [questionId, optionKey, 'votes'],
-        authedUserId,
-      );
+      const payload: AddUserToQuestionVotesPayload | void = action.payload;
+      if (payload) {
+        const { authedUserId, questionId, optionKey } = payload;
+        // $FlowSuppressError: The following line is borked because of https://github.com/facebook/flow/issues/7309
+        return state.mergeIn(
+          [questionId, optionKey, 'votes'],
+          authedUserId,
+        );
+      }
+      throw new Error('unexpected empty payload');
     }
 
     case INIT_QUESTIONS: {
-      return state.merge(fromJS(action.questions));
+      const payload: InitQuestionsPayload | void = action.payload;
+      if (payload) {
+        const { questions } = payload;
+        const questionsMap: QuestionsMap = ((fromJS(questions): any): QuestionsMap);
+        // $FlowSuppressError: The following line is borked because of https://github.com/facebook/flow/issues/7309
+        return state.merge(questionsMap);
+      }
+      throw new Error('unexpected empty payload');
     }
 
     default:
+      (action: empty); // eslint-disable-line no-unused-expressions
       return state;
   }
 };

@@ -1,3 +1,5 @@
+// @flow
+
 export const COLOR = {
   UI_GENERIC: 'teal',
 };

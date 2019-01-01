@@ -3,7 +3,7 @@ import React, { type Element } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Header } from 'semantic-ui-react';
 import CardContainer from '../shared/CardContainer';
-import { Question, User } from '../../types';
+import { type Question, type User } from '../../types';
 import { COLOR } from '../../constants';
 
 type Props = {

@@ -4,7 +4,7 @@ import PageContainer from '../pageContainers/PageContainer';
 import PollCard from '../../containers/pollPage/PollCard';
 import ResultsCard from '../../containers/pollPage/ResultsCard';
 import NotFoundPage from '../NotFoundPage';
-import { Question } from '../../types';
+import { type Question } from '../../types';
 
 type Props = {
   question?: Question,

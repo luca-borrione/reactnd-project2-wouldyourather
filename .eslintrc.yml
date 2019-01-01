@@ -1,11 +1,28 @@
-extends: airbnb
+root: true
 parser: babel-eslint
+
+extends:
+  - airbnb
+  # - flowtype-essential
+  - plugin:flowtype/recommended
+
+plugins:
+  - flowtype
+
 env:
   browser: true
   jest: true
+
 globals:
-  SyntheticEvent: true,
+  SyntheticEvent: true
+
+settings:
+  flowtype:
+      onlyFilesWithFlowAnnotation: true
+
 rules:
-  react/prefer-stateless-function: off
+  # no-unused-expressions: off
+  # flowtype/no-unused-expressions: error
+  react/prefer-stateless-function: warn # airbnb default: 'error'
   react/jsx-filename-extension: off
   react/jsx-one-expression-per-line: off

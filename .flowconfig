@@ -2,7 +2,7 @@
 .*/\.history/.*
 .*/\.idea/.*
 .*/build/.*
-.*/node_modules/.*
+.*/flow-typed/.*
 
 [include]
 
@@ -12,6 +12,16 @@ flow-typed
 [lints]
 
 [options]
-#all=true
+; all=true
+experimental.const_params=true
+include_warnings=true
+
+# Provides an escape hatch to suppress flow type errors.
+# Example: `function foo(bar: $FlowFixMe) {...}`.
+suppress_type=$FlowFixMe
+
+# Provides a way to suppress flow errors in the following line.
+# Example: // $FlowSuppressError: This following line is borked because of reasons.
+suppress_comment= \\(.\\|\n\\)*\\$FlowSuppressError
 
 [strict]

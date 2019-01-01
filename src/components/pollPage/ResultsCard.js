@@ -3,7 +3,7 @@ import React, { Component, type Element } from 'react';
 import { Header } from 'semantic-ui-react';
 import CardContainer from '../shared/CardContainer';
 import OptionPercentage from './OptionPercentage';
-import { Question, User } from '../../types';
+import { type Question, type User } from '../../types';
 
 type Props = {
   authedUserId: string,
@@ -20,7 +20,7 @@ type Result = {
 };
 
 class ResultsCard extends Component<Props> {
-  getResult(optionKey:string): Result {
+  getResult(optionKey: string): Result {
     const { authedUserId, question } = this.props;
     return {
       count: question[optionKey].votes.length,
@@ -45,8 +45,8 @@ class ResultsCard extends Component<Props> {
 
   render(): Element<any> {
     const { author } = this.props;
-    const header:string = `${author.name} asks`;
-    const avatarURL:string = `../${author.avatarURL}`;
+    const header: string = `${author.name} asks`;
+    const avatarURL: string = `../${author.avatarURL}`;
     const results: Result[] = this.getResults();
 
     return (

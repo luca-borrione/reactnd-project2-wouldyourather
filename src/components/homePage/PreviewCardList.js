@@ -2,7 +2,7 @@
 import React, { type Element } from 'react';
 import { Grid, Message } from 'semantic-ui-react';
 import PreviewCard from '../../containers/homePage/PreviewCard';
-import { Question } from '../../types';
+import { type Question } from '../../types';
 
 type Props = {
   altText?: string,

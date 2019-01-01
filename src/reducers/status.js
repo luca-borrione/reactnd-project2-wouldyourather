@@ -1,4 +1,6 @@
+// @flow
 import {
+  type StatusAction,
   SET_BUSY_STATE,
   SET_ERROR_STATE,
   SET_INIT_STATE,
@@ -13,7 +15,7 @@ import {
   READY_STATE,
 } from '../states/status';
 
-const reducer = (state = INIT_STATE, action) => {
+const reducer = (state: string = INIT_STATE, action: StatusAction) => {
   switch (action.type) {
     case SET_BUSY_STATE:
       return BUSY_STATE;
@@ -31,6 +33,7 @@ const reducer = (state = INIT_STATE, action) => {
       return READY_STATE;
 
     default:
+      (action: empty); // eslint-disable-line no-unused-expressions
       return state;
   }
 };

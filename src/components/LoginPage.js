@@ -11,12 +11,12 @@ import {
   Select,
 } from 'semantic-ui-react';
 import { COLOR } from '../constants';
-import { User } from '../types';
+import { type User } from '../types';
 
 type Props = {
   authedUserId?: string,
-  location?: { state:{ from:LocationShape } },
-  login: (selectedUserId:string) => void,
+  location?: { state: { from: LocationShape } },
+  login: (selectedUserId: string) => void,
   users: User[],
 };
 
@@ -28,7 +28,7 @@ type FormattedUser = {
   key: string,
   value: string,
   text: string,
-  image: { src:string, avatar:boolean },
+  image: { src: string, avatar: boolean },
 };
 
 interface IFormProps extends FormProps {
@@ -37,11 +37,11 @@ interface IFormProps extends FormProps {
 
 class LoginForm extends Component<Props, State> {
   static defaultProps = {
-    authedUserId: null,
+    authedUserId: '',
     location: undefined,
   };
 
-  constructor(props:Props) {
+  constructor(props: Props) {
     super(props);
     this.onSelect = this.onSelect.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -56,7 +56,7 @@ class LoginForm extends Component<Props, State> {
     this.setState({ selectedUserId });
   };
 
-  onSubmit = (event:SyntheticEvent<HTMLSelectElement>): void => {
+  onSubmit = (event: SyntheticEvent<HTMLSelectElement>): void => {
     const { login } = this.props;
     const { selectedUserId } = this.state;
     event.preventDefault();
@@ -76,7 +76,7 @@ class LoginForm extends Component<Props, State> {
     const { authedUserId, location, users } = this.props;
     const { selectedUserId } = this.state;
 
-    const { from } = location && location.state ? location.state : { from: ({ pathname: '/' }:LocationShape) };
+    const { from } = location && location.state ? location.state : { from: ({ pathname: '/' }: LocationShape) };
     const color: string = COLOR.UI_GENERIC;
 
     if (authedUserId) {

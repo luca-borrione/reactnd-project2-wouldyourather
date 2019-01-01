@@ -22,7 +22,7 @@ const TopBar = ({ authedUserId, toggleSidebar }: Props): Element<any> => (
 );
 
 TopBar.defaultProps = {
-  authedUserId: null,
+  authedUserId: '',
   toggleSidebar: undefined,
 };
 

@@ -1,3 +1,5 @@
+// FIXME: no idea how to type annotate a redux middleware
+
 /* eslint-disable no-console */
 const logger = store => next => (action) => {
   console.group(action.type);

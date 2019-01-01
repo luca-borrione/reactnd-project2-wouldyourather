@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import toJS from '../../hoc/to-js';
 import { getAuthedUserId } from '../../selectors/authedUserId';
-import { getQuestionById } from '../../selectors/questions';
-import { isAnswered } from '../../selectors/helpers';
+import { getQuestionById, isAnswered } from '../../selectors/questions';
 import PollPage from '../../components/pollPage/PollPage';
 
 const mapStateToProps = (state, { match }) => {

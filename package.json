@@ -17,22 +17,24 @@
     "redux": "4.0.1",
     "redux-immutable": "4.0.0",
     "redux-thunk": "2.3.0",
-    "reselect": "4.0.0",
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "0.84.0"
   },
   "devDependencies": {
     "docdash": "1.0.1",
     "eslint-config-airbnb": "17.1.0",
+    "eslint-config-flowtype-essential": "^1.0.0",
+    "eslint-plugin-flowtype": "^3.2.0",
     "jsdoc": "3.5.5"
   },
   "scripts": {
-    "start": "$(npm bin)/flow && react-scripts start",
+    "start": "react-scripts start",
     "build": "$(npm bin)/flow && react-scripts build",
     "test": "$(npm bin)/flow && react-scripts test",
     "eject": "react-scripts eject",
     "jsdoc": "jsdoc --configure jsdoc.conf.json --recurse --private",
     "flow": "$(npm bin)/flow",
+    "flow-typed": "$(npm bin)/flow-typed",
     "postinstall": "$(npm bin)/flow-typed install"
   },
   "browserslist": [

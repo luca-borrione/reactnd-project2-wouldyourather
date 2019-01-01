@@ -1,3 +1,10 @@
+// @flow
+import {
+  type InitialData,
+  type Question,
+  type Questions,
+  type Users,
+} from '../types';
 import {
   _getUsers,
   _getQuestions,
@@ -5,18 +12,22 @@ import {
   _saveQuestionAnswer,
 } from './_DATA';
 
-export const getInitialData = () => (
+export const getInitialData = (): Promise<InitialData> => (
   Promise.all([
-    _getUsers(),
-    _getQuestions(),
+    (_getQuestions(): Questions),
+    (_getUsers(): Users),
   ])
-    .then(([users, questions]) => ({
-      users,
+    .then(([questions, users]) => ({
       questions,
+      users,
     }))
 );
 
-export const saveQuestion = (authedUserId, optionOneText, optionTwoText) => (
+export const saveQuestion = (
+  authedUserId: string,
+  optionOneText: string,
+  optionTwoText: string,
+): Promise<Question> => (
   _saveQuestion({
     author: authedUserId,
     optionOneText,
@@ -24,12 +35,14 @@ export const saveQuestion = (authedUserId, optionOneText, optionTwoText) => (
   })
 );
 
-export const saveQuestionAnswer = (authedUserId, questionId, optionKey) => (
+export const saveQuestionAnswer = (
+  authedUserId: string,
+  questionId: string,
+  optionKey: string,
+): Promise<void> => (
   _saveQuestionAnswer({
     authedUser: authedUserId,
     qid: questionId,
     answer: optionKey,
   })
 );
-
-export default undefined;

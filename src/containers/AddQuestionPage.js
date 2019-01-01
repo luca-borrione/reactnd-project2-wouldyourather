@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { getAuthedUserId } from '../selectors/authedUserId';
 import { BUSY_STATE, SUCCESS_STATE } from '../states/status';
 import { getStatus } from '../selectors/status';
-import { setQuestion } from '../actions/shared';
+import setQuestion from '../actions/thunk/setQuestion';
 import { setReadyState } from '../actions/status';
 import AddQuestionPage from '../components/AddQuestionPage';
 

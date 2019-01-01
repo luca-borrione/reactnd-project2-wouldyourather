@@ -16,11 +16,11 @@ const OptionPercentage = ({
   text,
   voted,
 }: Props): Element<any> => {
-  let messageColor:string;
+  let messageColor: string;
   if (voted) {
     messageColor = COLOR.UI_GENERIC;
   }
-  const className:string = count === 0 ? 'hidden' : '';
+  const className: string = count === 0 ? 'hidden' : '';
   return (
     <Message color={messageColor}>
       {voted && (

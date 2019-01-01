@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import App from '../components/App';
 import { INIT_STATE } from '../states/status';
-import { handleInitialData } from '../actions/shared';
+import handleInitialData from '../actions/thunk/handleInitialData';
 import { getStatus } from '../selectors/status';
 
 const mapStateToProps = state => ({

@@ -14,7 +14,7 @@ import { COLOR } from '../constants';
 type Props = {
   authedUserId: string,
   busy: boolean,
-  setQuestion: (authedUserId:string, optionOneText:string, optionTwoText:string) => void,
+  setQuestion: (authedUserId: string, optionOneText: string, optionTwoText: string) => void,
   success: boolean,
   setReadyState: () => void,
 };
@@ -30,11 +30,11 @@ interface IFormProps extends FormProps {
 }
 
 class AddQuestionPage extends Component<Props, State> {
-  static isEmpty(value:string): boolean {
+  static isEmpty(value: string): boolean {
     return value === '' || value.trim() === '';
   }
 
-  constructor(props:Props) {
+  constructor(props: Props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -51,7 +51,7 @@ class AddQuestionPage extends Component<Props, State> {
     setReadyState();
   }
 
-  handleBlur = (event:SyntheticEvent<HTMLInputElement>): void => {
+  handleBlur = (event: SyntheticEvent<HTMLInputElement>): void => {
     const { id, value } = (event.currentTarget: HTMLInputElement);
     const { isEmpty } = this.constructor;
     if (isEmpty(value)) {
@@ -65,7 +65,7 @@ class AddQuestionPage extends Component<Props, State> {
     }
   };
 
-  handleChange = (event:SyntheticEvent<HTMLInputElement>, { id, value }: IFormProps): void => {
+  handleChange = (event: SyntheticEvent<HTMLInputElement>, { id, value }: IFormProps): void => {
     this.setState({
       [id]: value,
     });
@@ -81,10 +81,10 @@ class AddQuestionPage extends Component<Props, State> {
     const { busy, success } = this.props;
     const { optionOneText, optionTwoText } = this.state;
     const { isEmpty } = this.constructor;
-    const optionOneAlt:string = 'Enter Option One Text Here';
-    const optionTwoAlt:string = 'Enter Option Two Text Here';
+    const optionOneAlt: string = 'Enter Option One Text Here';
+    const optionTwoAlt: string = 'Enter Option Two Text Here';
 
-    const color:string = COLOR.UI_GENERIC;
+    const color: string = COLOR.UI_GENERIC;
 
     if (success) {
       return <Redirect to="/" />;

@@ -7,7 +7,7 @@ import {
   Header,
 } from 'semantic-ui-react';
 import CardContainer from '../shared/CardContainer';
-import { Question, User } from '../../types';
+import { type Question, type User } from '../../types';
 import { COLOR } from '../../constants';
 
 type Props = {
@@ -15,7 +15,7 @@ type Props = {
   author: User,
   busy: boolean,
   question: Question,
-  setVote: (authedUserId:string, questionId:string, optionKey:string) => void,
+  setVote: (authedUserId: string, questionId: string, optionKey: string) => void,
 };
 
 type State = {
@@ -52,9 +52,9 @@ class PollCard extends Component<Props, State> {
   render(): Element<any> {
     const { author, busy, question } = this.props;
     const { optionKey } = this.state;
-    const color:string = COLOR.UI_GENERIC;
-    const header:string = `${author.name} asks`;
-    const avatarURL:string = `../${author.avatarURL}`;
+    const color: string = COLOR.UI_GENERIC;
+    const header: string = `${author.name} asks`;
+    const avatarURL: string = `../${author.avatarURL}`;
 
     return (
       <CardContainer id="poll-card" header={header} avatarURL={avatarURL}>

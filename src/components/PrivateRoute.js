@@ -17,7 +17,7 @@ const PrivateRoute = ({
   <Route
     {...rest}
     render={props => (
-      authedUserId !== null
+      authedUserId !== ''
         ? (<Component {...props} />)
         : (
           <Redirect
@@ -32,7 +32,7 @@ const PrivateRoute = ({
 );
 
 PrivateRoute.defaultProps = {
-  authedUserId: null,
+  authedUserId: '',
 };
 
 export default PrivateRoute;
