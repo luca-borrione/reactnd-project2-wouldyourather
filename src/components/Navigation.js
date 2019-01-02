@@ -17,7 +17,7 @@ const Navigation = (): Element<any> => (
       <PrivateRoute path="/question/:questionId" component={PollPage} />
       <PrivateRoute path="/add" component={AddQuestionPage} />
       <PrivateRoute path="/leaderboard" component={LeaderboardPage} />
-      <Route component={NotFoundPage} />
+      <PrivateRoute component={NotFoundPage} />
     </Switch>
   </Router>
 );
