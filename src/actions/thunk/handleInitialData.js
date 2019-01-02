@@ -13,7 +13,7 @@ import {
   type Thunk,
 } from '../../types';
 
-type InitialDataAction =
+export type InitialDataAction =
   | SetBusyStateAction
   | InitUsersAction
   | InitQuestionsAction

@@ -24,15 +24,19 @@ export type LeaderValue =
 export type LeaderMap = Map<LeaderKey, LeaderValue>
 
 export type QuestionOption = {
+  votes: Array<string>,
   text: string,
-  votes: Array<string>
+}
+export type IQuestionOptionMap = {
+  votes: List<string>,
+  text: string
 }
 export type QuestionOptionKey =
-  | 'text'
   | 'votes'
+  | 'text'
 export type QuestionOptionValue =
-  | string
   | List<string>
+  | string
 export type QuestionOptionMap = Map<QuestionOptionKey, QuestionOptionValue>
 
 
@@ -42,6 +46,13 @@ export type Question = {
   timestamp: number,
   optionOne: QuestionOption,
   optionTwo: QuestionOption
+}
+export type IQuestionMap = {
+  author: string,
+  id: string,
+  optionOne: QuestionOptionMap,
+  optionTwo: QuestionOptionMap,
+  timestamp: number,
 }
 export type QuestionKey =
   | 'id'
@@ -75,6 +86,13 @@ export type User = {
   id: string,
   name: string,
   questions: Array<string>
+}
+export interface IUserMap {
+  answers: AnswersMap,
+  avatarURL: string,
+  id: string,
+  name: string,
+  questions: List<string>,
 }
 export type UserKey =
   | 'answers'

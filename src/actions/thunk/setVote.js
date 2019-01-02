@@ -12,7 +12,7 @@ import {
   type Thunk,
 } from '../../types';
 
-type SetVoteAction =
+export type SetVoteAction =
   | SetBusyStateAction
   | SetReadyStateAction
   | AddAnswerToUserAction

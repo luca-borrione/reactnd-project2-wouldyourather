@@ -1,9 +1,17 @@
+// @flow
 import { connect } from 'react-redux';
-import { logout } from '../../actions/authedUserId';
+import {
+  logout,
+  type LogoutAction,
+} from '../../actions/authedUserId';
 import NavMenuItems from '../../components/menuBar/NavMenuItems';
+import { type Dispatch } from '../../types';
 
-const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
+type Action =
+  | LogoutAction
+
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+  logout: (): void => dispatch(logout()),
 });
 
 export default connect(

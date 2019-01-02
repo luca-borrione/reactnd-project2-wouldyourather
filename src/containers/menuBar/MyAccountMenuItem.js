@@ -1,20 +1,39 @@
+// @flow
 import { connect } from 'react-redux';
 import { getAuthedUserId } from '../../selectors/authedUserId';
-import { getUserById } from '../../selectors/users';
-import { logout } from '../../actions/authedUserId';
+import {
+  getUserById,
+  user,
+} from '../../selectors/users';
+import {
+  logout,
+  type LogoutAction,
+} from '../../actions/authedUserId';
 import MyAccountMenuItem from '../../components/menuBar/MyAccountMenuItem';
+import {
+  type Dispatch,
+  type StateMap,
+  type UserMap,
+} from '../../types';
 
-const mapStateToProps = (state) => {
-  const authedUserId = getAuthedUserId(state);
-  const user = getUserById(state, authedUserId);
+type Action =
+  | LogoutAction
+
+const mapStateToProps = (state: StateMap): {
+  avatarURL: string,
+  name: string,
+} => {
+  const authedUserId: string = getAuthedUserId(state);
+  const userMap: UserMap = getUserById(state, authedUserId);
+  const { avatarURL, name } = user(userMap);
   return {
-    avatarURL: user.get('avatarURL'),
-    userName: user.get('name'),
+    avatarURL,
+    name,
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout()),
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+  logout: (): void => dispatch(logout()),
 });
 
 export default connect(

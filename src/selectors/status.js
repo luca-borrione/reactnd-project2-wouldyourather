@@ -1,15 +1,9 @@
 // @flow
-import {
-  type StateMap,
-  type StateValue,
-} from '../types';
+import { type StateMap } from '../types';
+import { asString } from '../utils/helpers';
 
-export const getStatus = (state: StateMap): string => {
-  const status: StateValue | void = state.get('status');
-  if (typeof status === 'string') {
-    return status;
-  }
-  throw new TypeError(`unexpected type: ${typeof status}`);
-};
+export const getStatus = (state: StateMap): string => (
+  asString(state.get('status'))
+);
 
 export default undefined;

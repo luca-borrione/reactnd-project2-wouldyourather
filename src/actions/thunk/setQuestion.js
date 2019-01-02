@@ -13,7 +13,7 @@ import {
   type Thunk,
 } from '../../types';
 
-type SetQuestionAction =
+export type SetQuestionAction =
   | SetBusyStateAction
   | AddQuestionAction
   | AddQuestionToUserAction

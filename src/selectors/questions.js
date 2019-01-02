@@ -1,69 +1,78 @@
 // @flow
 import { type List } from 'immutable';
-import { isMap } from '../utils/helpers';
 import { getAuthedUserId } from './authedUserId';
 import {
+  type IQuestionOptionMap,
+  type QuestionOptionMap,
+  type QuestionOptionValue,
+  type IQuestionMap,
   type QuestionsMap,
   type QuestionMap,
   type QuestionValue,
   type StateValue,
   type StateMap,
 } from '../types';
+import {
+  asList,
+  asMap,
+  asNumber,
+  asString,
+} from '../utils/helpers';
 
-const questions = (state: StateMap): QuestionsMap => {
-  const q: StateValue | void = state.get('questions');
-  if (q && isMap) {
-    return ((q: any): QuestionsMap);
-  }
-  throw new TypeError(`unexpected type: ${typeof q}`);
+export const option = (optionMap: QuestionOptionMap): IQuestionOptionMap => {
+  const votes: QuestionOptionValue | void = optionMap.get('votes');
+  return {
+    votes: (asList(votes): List<string>),
+    text: asString(optionMap.get('text')),
+  };
 };
 
-const timestamp = (question: QuestionMap): number => {
-  const t: QuestionValue | void = question.get('timestamp');
-  if (typeof t === 'number') {
-    return t;
-  }
-  throw new TypeError(`unexpected type: ${typeof t}`);
+export const question = (questionMap: QuestionMap): IQuestionMap => {
+  const optionOne: QuestionValue | void = questionMap.get('optionOne');
+  const optionTwo: QuestionValue | void = questionMap.get('optionTwo');
+  return {
+    author: asString(questionMap.get('author')),
+    id: asString(questionMap.get('id')),
+    optionOne: (asMap(optionOne): QuestionOptionMap),
+    optionTwo: (asMap(optionTwo): QuestionOptionMap),
+    timestamp: asNumber(questionMap.get('timestamp')),
+  };
+};
+
+const questions = (state: StateMap): QuestionsMap => {
+  const questionsMap: StateValue | void = state.get('questions');
+  return (asMap(questionsMap): QuestionsMap);
 };
 
 /* - - - - - - - */
 
 const descendingByTimestamp = (a: QuestionMap, b: QuestionMap): number => (
-  timestamp(b) - timestamp(a)
+  question(b).timestamp - question(a).timestamp
 );
 
-
-export const isAnswered = (question: QuestionMap, userId: string): boolean => {
-  function isOptionVoted(optionKey: string): boolean {
-    // FIXME: reason for the following any: https://github.com/facebook/flow/issues/7307
-    return ((question: any).getIn([optionKey, 'votes']): List<string>).includes(userId);
-  }
-  return isOptionVoted('optionOne') || isOptionVoted('optionTwo');
+export const isAnswered = (questionMap: QuestionMap, userId: string): boolean => {
+  const { optionOne, optionTwo } = question(questionMap);
+  return option(optionOne).votes.includes(userId)
+    || option(optionTwo).votes.includes(userId);
 };
-
 
 export const getAnsweredQuestions = (state: StateMap): List<QuestionMap> => {
   const userId: string = getAuthedUserId(state);
   return questions(state)
-    .filter(question => isAnswered(question, userId))
+    .filter(questionMap => isAnswered(questionMap, userId))
     .sort(descendingByTimestamp)
     .toList();
 };
-
 
 export const getUnansweredQuestions = (state: StateMap): List<QuestionMap> => {
   const userId: string = getAuthedUserId(state);
   return questions(state)
-    .filter(question => !isAnswered(question, userId))
+    .filter(questionMap => !isAnswered(questionMap, userId))
     .sort(descendingByTimestamp)
     .toList();
 };
 
-
 export const getQuestionById = (state: StateMap, questionId: string): QuestionMap => {
-  const question: QuestionMap | void = questions(state).get(questionId);
-  if (question && isMap(question)) {
-    return question;
-  }
-  throw new TypeError(`unexpected type: ${typeof question}`);
+  const questionMap: QuestionMap | void = questions(state).get(questionId);
+  return (asMap(questionMap): QuestionMap);
 };
