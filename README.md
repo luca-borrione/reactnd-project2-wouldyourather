@@ -32,5 +32,13 @@ This web app meets the [project specifications](https://review.udacity.com/#!/ru
 * start the development server with `npm start`
 * start the flow server with `npm run flow`
 
+
 ## Important
 New polls will not be accessible at their url because of the way the backend is set up in this application
+
+## Notes:
+- source of the [Image of Tyler McGinnis](https://avatars.io/twitter/tylermcginnis)
+- source of the [Image of Sarah Edo](https://avatars.io/twitter/sarah_edo)
+- source of the [Image of JD](https://i.stack.imgur.com/vv8nD.png) (see [stackoverflow.com](https://stackoverflow.com/questions/31395381/generating-initials-avatar-with-elixir))
+
+
