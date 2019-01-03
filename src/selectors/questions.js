@@ -4,45 +4,34 @@ import { getAuthedUserId } from './authedUserId';
 import {
   type IQuestionOptionMap,
   type QuestionOptionMap,
-  type QuestionOptionValue,
   type IQuestionMap,
   type QuestionsMap,
   type QuestionMap,
-  type QuestionValue,
-  type StateValue,
   type StateMap,
 } from '../types';
 import {
-  asList,
-  asMap,
-  asNumber,
-  asString,
+  expectList,
+  expectMap,
+  expectNumber,
+  expectString,
 } from '../utils/helpers';
 
-export const option = (optionMap: QuestionOptionMap): IQuestionOptionMap => {
-  const votes: QuestionOptionValue | void = optionMap.get('votes');
-  return {
-    votes: (asList(votes): List<string>),
-    text: asString(optionMap.get('text')),
-  };
-};
+export const option = (optionMap: QuestionOptionMap): IQuestionOptionMap => ({
+  text: expectString(optionMap.get('text')),
+  votes: (expectList(optionMap.get('votes')): List<string>),
+});
 
-export const question = (questionMap: QuestionMap): IQuestionMap => {
-  const optionOne: QuestionValue | void = questionMap.get('optionOne');
-  const optionTwo: QuestionValue | void = questionMap.get('optionTwo');
-  return {
-    author: asString(questionMap.get('author')),
-    id: asString(questionMap.get('id')),
-    optionOne: (asMap(optionOne): QuestionOptionMap),
-    optionTwo: (asMap(optionTwo): QuestionOptionMap),
-    timestamp: asNumber(questionMap.get('timestamp')),
-  };
-};
+export const question = (questionMap: QuestionMap): IQuestionMap => ({
+  author: expectString(questionMap.get('author')),
+  id: expectString(questionMap.get('id')),
+  optionOne: (expectMap(questionMap.get('optionOne')): QuestionOptionMap),
+  optionTwo: (expectMap(questionMap.get('optionTwo')): QuestionOptionMap),
+  timestamp: expectNumber(questionMap.get('timestamp')),
+});
 
-const questions = (state: StateMap): QuestionsMap => {
-  const questionsMap: StateValue | void = state.get('questions');
-  return (asMap(questionsMap): QuestionsMap);
-};
+const questions = (state: StateMap): QuestionsMap => (
+  (expectMap(state.get('questions')): QuestionsMap)
+);
 
 /* - - - - - - - */
 
@@ -72,7 +61,6 @@ export const getUnansweredQuestions = (state: StateMap): List<QuestionMap> => {
     .toList();
 };
 
-export const getQuestionById = (state: StateMap, questionId: string): QuestionMap => {
-  const questionMap: QuestionMap | void = questions(state).get(questionId);
-  return (asMap(questionMap): QuestionMap);
-};
+export const getQuestionById = (state: StateMap, questionId: string): QuestionMap | void => (
+  questions(state).get(questionId)
+);

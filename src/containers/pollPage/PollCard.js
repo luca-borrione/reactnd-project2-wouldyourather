@@ -14,6 +14,7 @@ import {
   type StateMap,
   type UserMap,
 } from '../../types';
+import { expectMap } from '../../utils/helpers';
 
 type Action =
   | Thunk<SetVoteAction>
@@ -27,7 +28,7 @@ const mapStateToProps = (
   busy: boolean,
 } => ({
   authedUserId: getAuthedUserId(state),
-  author: getUserById(state, question.author),
+  author: expectMap(getUserById(state, question.author)),
   busy: getStatus(state) === BUSY_STATE,
 });
 

@@ -5,7 +5,7 @@ import toJS from '../../hoc/to-js';
 import { getAuthedUserId } from '../../selectors/authedUserId';
 import { getQuestionById, isAnswered } from '../../selectors/questions';
 import PollPage from '../../components/pollPage/PollPage';
-import { asString } from '../../utils/helpers';
+import { expectString } from '../../utils/helpers';
 import {
   type QuestionMap,
   type StateMap,
@@ -16,10 +16,10 @@ const mapStateToProps = (
   { match }: { match: Match},
 ): {
   isAnswered: boolean,
-  question: QuestionMap,
+  question?: QuestionMap,
 } => {
-  const { questionId } = match.params;
-  const question: QuestionMap = getQuestionById(state, asString(questionId));
+  const questionId: string = expectString(match.params.questionId);
+  const question: QuestionMap | void = getQuestionById(state, questionId);
   const authedUserId: string = getAuthedUserId(state);
   return {
     question,

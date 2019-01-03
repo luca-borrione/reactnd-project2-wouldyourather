@@ -1,9 +1,9 @@
 // @flow
 import { type StateMap } from '../types';
-import { asString } from '../utils/helpers';
+import { expectString } from '../utils/helpers';
 
 export const getAuthedUserId = (state: StateMap): string => (
-  asString(state.get('authedUserId'))
+  expectString(state.get('authedUserId'))
 );
 
 export default undefined;

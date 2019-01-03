@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import toJS from '../../hoc/to-js';
 import { getUserById } from '../../selectors/users';
 import PreviewCard from '../../components/homePage/PreviewCard';
+import { expectMap } from '../../utils/helpers';
 import {
   type Question,
   type StateMap,
@@ -15,7 +16,7 @@ const mapStateToProps = (
 ): {
   author: UserMap
 } => ({
-  author: getUserById(state, question.author),
+  author: expectMap(getUserById(state, question.author)),
 });
 
 export default connect(

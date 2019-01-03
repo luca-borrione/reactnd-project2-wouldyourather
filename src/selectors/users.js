@@ -7,34 +7,27 @@ import {
   type AnswersMap,
   type LeaderMap,
   type StateMap,
-  type StateValue,
   type IUserMap,
   type UserMap,
-  type UserValue,
   type UsersMap,
 } from '../types';
 import {
-  asList,
-  asMap,
-  asString,
+  expectList,
+  expectMap,
+  expectString,
 } from '../utils/helpers';
 
-export const user = (userMap: UserMap): IUserMap => {
-  const answers: UserValue | void = userMap.get('answers');
-  const questions: UserValue | void = userMap.get('questions');
-  return {
-    answers: (asMap(answers): AnswersMap),
-    avatarURL: asString(userMap.get('avatarURL')),
-    id: asString(userMap.get('id')),
-    name: asString(userMap.get('name')),
-    questions: (asList(questions): List<string>),
-  };
-};
+export const user = (userMap: UserMap): IUserMap => ({
+  answers: (expectMap(userMap.get('answers')): AnswersMap),
+  avatarURL: expectString(userMap.get('avatarURL')),
+  id: expectString(userMap.get('id')),
+  name: expectString(userMap.get('name')),
+  questions: (expectList(userMap.get('questions')): List<string>),
+});
 
-const users = (state: StateMap): UsersMap => {
-  const usersMap: StateValue | void = state.get('users');
-  return (asMap(usersMap): UsersMap);
-};
+const users = (state: StateMap): UsersMap => (
+  (expectMap(state.get('users')): UsersMap)
+);
 
 /* - - - - - - - */
 
@@ -48,10 +41,9 @@ export const getUsers = (state: StateMap): List<UserMap> => (
   users(state).toList()
 );
 
-export const getUserById = (state: StateMap, userId: string): UserMap => {
-  const userMap: UserMap | void = users(state).get(userId);
-  return (asMap(userMap): UserMap);
-};
+export const getUserById = (state: StateMap, userId: string): UserMap | void => (
+  users(state).get(userId)
+);
 
 export const getLeaders = (state: StateMap): List<LeaderMap> => (
   users(state)

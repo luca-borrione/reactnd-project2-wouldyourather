@@ -9,6 +9,7 @@ import {
   type StateMap,
   type UserMap,
 } from '../../types';
+import { expectMap } from '../../utils/helpers';
 
 const mapStateToProps = (
   state: StateMap,
@@ -18,7 +19,7 @@ const mapStateToProps = (
   author: UserMap,
 } => ({
   authedUserId: getAuthedUserId(state),
-  author: getUserById(state, question.author),
+  author: expectMap(getUserById(state, question.author)),
 });
 
 export default connect(

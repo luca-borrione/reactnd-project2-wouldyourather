@@ -15,6 +15,7 @@ import {
   type StateMap,
   type UserMap,
 } from '../../types';
+import { expectMap } from '../../utils/helpers';
 
 type Action =
   | LogoutAction
@@ -24,7 +25,7 @@ const mapStateToProps = (state: StateMap): {
   name: string,
 } => {
   const authedUserId: string = getAuthedUserId(state);
-  const userMap: UserMap = getUserById(state, authedUserId);
+  const userMap: UserMap = expectMap(getUserById(state, authedUserId));
   const { avatarURL, name } = user(userMap);
   return {
     avatarURL,
