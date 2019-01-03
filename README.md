@@ -17,20 +17,20 @@ This web app meets the [project specifications](https://review.udacity.com/#!/ru
 
 
 ## Tech Stack:
-- [Node](https://nodejs.org)
-  A JavaScript runtime built on Chrome's V8 JavaScript engine
-- [React](https://reactjs.org/)
-  A JavaScript library for building user interfaces
-- [Redux](https://redux.js.org/)
-  A predictable state container for JavaScript apps.
-- [Semantic UI React](https://react.semantic-ui.com/)
-  React integration for Semantic UI, a development framework that helps create beautiful, responsive layouts using human-friendly tags
-- [Immutable JS](https://facebook.github.io/immutable-js/)
-  Immutable collections for JavaScript
-- [Flow](https://flow.org/)
-  Static type checker for JavaScript
-- [ESLint](https://eslint.org/)
-  Lintint utility for JavaScript and JSX
+- [Node](https://nodejs.org):
+A JavaScript runtime built on Chrome's V8 JavaScript engine
+- [React](https://reactjs.org/):
+A JavaScript library for building user interfaces
+- [Redux](https://redux.js.org/):
+A predictable state container for JavaScript apps.
+- [Semantic UI React](https://react.semantic-ui.com/):
+React integration for Semantic UI, a development framework that helps create beautiful, responsive layouts using human-friendly tags
+- [Immutable JS](https://facebook.github.io/immutable-js/):
+Immutable collections for JavaScript
+- [Flow](https://flow.org/):
+Static type checker for JavaScript
+- [ESLint](https://eslint.org/):
+Lintint utility for JavaScript and JSX
 
 
 ## Commands
