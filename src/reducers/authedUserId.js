@@ -18,7 +18,7 @@ function reducer(state: string = '', action: AuthedUserIdAction): string {
       return '';
 
     default: {
-      (action: empty); // eslint-disable-line no-unused-expressions
+      (action: empty); // xxeslint-disable-line no-unused-expressions
       return state;
     }
   }
