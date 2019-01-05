@@ -21,8 +21,8 @@ settings:
       onlyFilesWithFlowAnnotation: true
 
 rules:
-  # no-unused-expressions: off
-  # flowtype/no-unused-expressions: error
+  no-unused-expressions: off
+  flowtype/no-unused-expressions: error
   react/prefer-stateless-function: warn # airbnb default: 'error'
   react/jsx-filename-extension: off
   react/jsx-one-expression-per-line: off

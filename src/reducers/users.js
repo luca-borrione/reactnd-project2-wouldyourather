@@ -51,7 +51,7 @@ const reducer = (state: UsersMap = new Map(), action: UsersAction) => {
     }
 
     default:
-      (action: empty); // eslint-disable-line no-unused-expressions
+      (action: empty);
       return state;
   }
 };

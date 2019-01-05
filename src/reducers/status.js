@@ -33,7 +33,7 @@ const reducer = (state: string = INIT_STATE, action: StatusAction) => {
       return READY_STATE;
 
     default:
-      (action: empty); // eslint-disable-line no-unused-expressions
+      (action: empty);
       return state;
   }
 };
