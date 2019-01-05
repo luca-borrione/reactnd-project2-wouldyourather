@@ -22,7 +22,7 @@ export const expectString = (string: any): string => {
 
 export const expectNumber = (number: any, allowNaN: boolean = false): number => {
   if (typeof number === 'number') {
-    (number: number); // eslint-disable-line no-unused-expressions
+    (number: number);
   } else {
     throw new TypeError(`unexpected type: ${typeof number} - expected number`);
   }

@@ -1,0 +1,107 @@
+patch-package
+--- a/node_modules/react-scripts/config/webpack.config.dev.js
++++ b/node_modules/react-scripts/config/webpack.config.dev.js
+@@ -202,7 +202,7 @@ module.exports = {
+                 settings: { react: { version: '999.999.999' } },
+               },
+               ignore: false,
+-              useEslintrc: false,
++              useEslintrc: true,
+               // @remove-on-eject-end
+             },
+             loader: require.resolve('eslint-loader'),
+--- a/node_modules/react-scripts/config/webpack.config.prod.js
++++ b/node_modules/react-scripts/config/webpack.config.prod.js
+@@ -278,7 +278,7 @@ module.exports = {
+                 settings: { react: { version: '999.999.999' } },
+               },
+               ignore: false,
+-              useEslintrc: false,
++              useEslintrc: true,
+               // @remove-on-eject-end
+             },
+             loader: require.resolve('eslint-loader'),
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/.bin/eslint
+@@ -0,0 +1 @@
++../../../eslint/bin/eslint.js
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/.bin/file-loader
+@@ -0,0 +1 @@
++../../../file-loader
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/.bin/jest
+@@ -0,0 +1 @@
++../../../jest/bin/jest.js
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/.bin/mini-css-extract-plugin
+@@ -0,0 +1 @@
++../../../mini-css-extract-plugin
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/.bin/terser-webpack-plugin
+@@ -0,0 +1 @@
++../../../terser-webpack-plugin
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/.bin/url-loader
+@@ -0,0 +1 @@
++../../../url-loader
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/.bin/webpack
+@@ -0,0 +1 @@
++../../../webpack/bin/webpack.js
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/.bin/webpack-dev-server
+@@ -0,0 +1 @@
++../../../webpack-dev-server/bin/webpack-dev-server.js
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/@babel/core/node_modules/.bin/json5
+@@ -0,0 +1 @@
++../../../../../../json5/lib/cli.js
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/@babel/core/node_modules/.bin/parser
+@@ -0,0 +1 @@
++../../../../../../@babel/parser/bin/babel-parser.js
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/@babel/core/node_modules/.bin/semver
+@@ -0,0 +1 @@
++../../../../../../semver/bin/semver
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/babel-loader/node_modules/.bin/mkdirp
+@@ -0,0 +1 @@
++../../../../../mkdirp/bin/cmd.js
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/babel-loader/node_modules/.bin/webpack
+@@ -0,0 +1 @@
++../../../../../webpack/bin/webpack.js
+\ No newline at end of file
+new file mode 120000
+--- /dev/null
++++ b/node_modules/react-scripts/node_modules/eslint-plugin-flowtype/node_modules/.bin/eslint
+@@ -0,0 +1 @@
++../../../../../eslint/bin/eslint.js
+\ No newline at end of file

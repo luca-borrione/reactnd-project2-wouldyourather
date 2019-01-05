@@ -51,7 +51,7 @@ const reducer = (state: QuestionsMap = new Map(), action: QuestionsAction) => {
     }
 
     default:
-      (action: empty); // eslint-disable-line no-unused-expressions
+      (action: empty);
       return state;
   }
 };

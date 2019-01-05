@@ -23,19 +23,22 @@
   "devDependencies": {
     "docdash": "1.0.1",
     "eslint-config-airbnb": "17.1.0",
-    "eslint-config-flowtype-essential": "^1.0.0",
-    "eslint-plugin-flowtype": "^3.2.0",
-    "jsdoc": "3.5.5"
+    "eslint-config-flowtype-essential": "1.0.0",
+    "eslint-plugin-flowtype": "3.2.0",
+    "jsdoc": "3.5.5",
+    "patch-package": "5.1.1",
+    "postinstall-prepare": "1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "$(npm bin)/flow; react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "$(npm bin)/flow; react-scripts test",
     "eject": "react-scripts eject",
     "jsdoc": "jsdoc --configure jsdoc.conf.json --recurse --private",
-    "flow": "$(npm bin)/flow-typed install; $(npm bin)/flow",
+    "flow": "$(npm bin)/flow",
     "flow-typed": "$(npm bin)/flow-typed",
-    "postinstall": "$(npm bin)/flow-typed install"
+    "postinstall": "$(npm bin)/flow-typed install",
+    "prepare": "patch-package"
   },
   "browserslist": [
     ">0.2%",
