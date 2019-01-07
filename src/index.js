@@ -16,6 +16,9 @@ import {
 const store: Store<StateMap, StoreAction> = createStore(reducer, middleware);
 const root: HTMLElement | null = document.getElementById('root');
 
+console.log('window.location', window.location); // eslint-disable-line no-console
+console.log(`window.location.pathname${window.location.pathname}`); // eslint-disable-line no-console
+
 if (root) {
   ReactDOM.render(
     <Provider store={store}>
