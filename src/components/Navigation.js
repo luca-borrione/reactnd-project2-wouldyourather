@@ -15,8 +15,9 @@ type Props = {
 };
 
 function getBasename() {
+  const { basename } = settings;
   // eslint-disable-next-line prefer-template
-  return '/' + (settings[window.location.hostname] || '');
+  return '/' + (basename[window.location.hostname] || '');
 }
 
 const Navigation = ({ basename }: Props): Element<any> => {
