@@ -4,11 +4,16 @@ import { ImmutableLoadingBar as LoadingBar } from 'react-redux-loading-bar';
 import Navigation from './Navigation';
 
 type Props = {
+  basename?: string,
   loadInitialData: () => void,
   loading: boolean,
 };
 
 class App extends Component<Props> {
+  static defaultProps = {
+    basename: '',
+  };
+
   componentDidMount(): void {
     const { loadInitialData } = this.props;
     document.title = 'Would You Rather...?';
@@ -16,13 +21,13 @@ class App extends Component<Props> {
   }
 
   render(): Element<any> {
-    const { loading } = this.props;
+    const { basename, loading } = this.props;
     return (
       <Fragment>
         <LoadingBar />
         {loading === true
           ? null
-          : <Navigation />}
+          : <Navigation basename={basename} />}
       </Fragment>
     );
   }
