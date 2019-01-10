@@ -9,6 +9,7 @@ import {
   GridRow,
   Segment,
 } from 'semantic-ui-react';
+import { addBasenameToUrl } from '../../utils/helpers';
 
 type Props = {
   avatarURL: string,
@@ -32,7 +33,7 @@ const CardContainer = ({
         <Image
           className="small-avatar"
           avatar
-          src={avatarURL}
+          src={addBasenameToUrl(avatarURL)}
           size="mini"
           centered
           verticalAlign="middle"
@@ -46,7 +47,7 @@ const CardContainer = ({
             <Image
               className="big-avatar"
               avatar
-              src={avatarURL}
+              src={addBasenameToUrl(avatarURL)}
               size="small"
               centered
               verticalAlign="middle"

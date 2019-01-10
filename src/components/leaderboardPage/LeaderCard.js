@@ -9,6 +9,7 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { COLOR } from '../../constants';
+import { addBasenameToUrl } from '../../utils/helpers';
 
 type Props = {
   answered: number,
@@ -41,7 +42,7 @@ const LeaderCard = ({
             <Image
               className="big-avatar"
               avatar
-              src={avatarURL}
+              src={addBasenameToUrl(avatarURL)}
               size="tiny"
               centered
               verticalAlign="middle"

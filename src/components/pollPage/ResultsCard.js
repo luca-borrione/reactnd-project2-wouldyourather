@@ -46,12 +46,11 @@ class ResultsCard extends Component<Props> {
   render(): Element<any> {
     const { author } = this.props;
     const header: string = `${author.name} asks`;
-    const avatarURL: string = `../${author.avatarURL}`;
     const results: Result[] = this.getResults();
 
     return (
       <CardContainer
-        avatarURL={avatarURL}
+        avatarURL={author.avatarURL}
         header={header}
         id="results-card"
       >

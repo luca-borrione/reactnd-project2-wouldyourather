@@ -5,6 +5,7 @@ import {
   Menu,
   Responsive,
 } from 'semantic-ui-react';
+import { addBasenameToUrl } from '../../utils/helpers';
 
 type Props = {
   avatarURL: string,
@@ -15,13 +16,13 @@ type Props = {
 const MyAccountMenuItem = ({ avatarURL, logout, userName }: Props): Element<any> => (
   <Menu.Item position="right">
     <Responsive {...Responsive.onlyMobile}>
-      <Image avatar src={avatarURL} spaced />
+      <Image avatar src={addBasenameToUrl(avatarURL)} spaced />
       {userName}
     </Responsive>
     <Responsive minWidth="768">{/* onlyTablet and up */}
       <span>
         Hello, {userName}
-        <Image avatar src={avatarURL} spaced />
+        <Image avatar src={addBasenameToUrl(avatarURL)} spaced />
         <span
           onClick={logout}
           onKeyPress={logout}

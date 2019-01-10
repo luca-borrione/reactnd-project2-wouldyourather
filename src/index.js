@@ -15,14 +15,11 @@ import {
 
 const store: Store<StateMap, StoreAction> = createStore(reducer, middleware);
 const root: HTMLElement | null = document.getElementById('root');
-const basename: string = window.location.pathname.replace(/\/[^/]+\.[a-z0-9]{3,4}$/i, '/').replace(/\/$/, '');
-console.log('window.location', window.location); // eslint-disable-line no-console
-console.log(`basename: ${basename}`); // eslint-disable-line no-console
 
 if (root) {
   ReactDOM.render(
     <Provider store={store}>
-      <App basename={basename} />
+      <App />
     </Provider>,
     root,
   );

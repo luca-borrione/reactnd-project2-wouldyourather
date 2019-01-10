@@ -54,10 +54,9 @@ class PollCard extends Component<Props, State> {
     const { optionKey } = this.state;
     const color: string = COLOR.UI_GENERIC;
     const header: string = `${author.name} asks`;
-    const avatarURL: string = `../${author.avatarURL}`;
 
     return (
-      <CardContainer id="poll-card" header={header} avatarURL={avatarURL}>
+      <CardContainer id="poll-card" header={header} avatarURL={author.avatarURL}>
         <Header as="h3">Would you rather...</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Radio

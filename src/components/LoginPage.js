@@ -12,6 +12,7 @@ import {
 } from 'semantic-ui-react';
 import { COLOR } from '../constants';
 import { type User } from '../types';
+import { addBasenameToUrl } from '../utils/helpers';
 
 type Props = {
   authedUserId?: string,
@@ -68,7 +69,10 @@ class LoginForm extends Component<Props, State> {
       key: user.id,
       value: user.id,
       text: user.name,
-      image: { src: user.avatarURL, avatar: true },
+      image: {
+        src: addBasenameToUrl(user.avatarURL),
+        avatar: true,
+      },
     }))
   );
 
@@ -99,7 +103,7 @@ class LoginForm extends Component<Props, State> {
               <Image
                 centered
                 size="small"
-                src="/images/react-redux.jpg"
+                src={addBasenameToUrl('/images/react-redux.jpg')}
               />
               <h3><p>Sign in</p></h3>
               <Select
