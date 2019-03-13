@@ -1,21 +1,21 @@
 // @flow
-/* eslint-disable prefer-destructuring */
-
 import {
   type AuthedUserIdAction,
-  LOGIN, type LoginPayload,
+  LOGIN,
   LOGOUT,
 } from '../actions/authedUserId';
 
-function reducer(state: string = '', action: AuthedUserIdAction): string {
+export const INITIAL_STATE = '';
+
+function reducer(state: string = INITIAL_STATE, action: AuthedUserIdAction): string {
   switch (action.type) {
     case LOGIN: {
-      const payload: LoginPayload | void = action.payload;
-      return (payload) ? payload.id : '';
+      const { payload } = action;
+      return payload.id;
     }
 
     case LOGOUT:
-      return '';
+      return INITIAL_STATE;
 
     default: {
       (action: empty); // eslint-disable-line no-unused-expressions

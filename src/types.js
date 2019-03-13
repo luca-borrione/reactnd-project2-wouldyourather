@@ -136,9 +136,9 @@ export type StateMap = Map<StateKey, StateValue>
 /* Actions - - - -  */
 // see https://flow.org/en/docs/react/redux/#typing-redux-thunk-actions-
 
-export type Action<T, P = void> = {
+export type Action<T, P = void | {}> = {
   type: T,
-  payload?: P
+  payload: P
 }
 
 export type StoreAction =

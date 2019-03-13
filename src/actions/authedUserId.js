@@ -27,4 +27,5 @@ export const login = (id: string): LoginAction => ({
 
 export const logout = (): LogoutAction => ({
   type: LOGOUT,
+  payload: {},
 });

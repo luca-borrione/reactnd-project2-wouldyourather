@@ -28,20 +28,25 @@ export type StatusAction =
 
 export const setBusyState = (): SetBusyStateAction => ({
   type: SET_BUSY_STATE,
+  payload: {},
 });
 
 export const setErrorState = (): SetErrorStateAction => ({
   type: SET_ERROR_STATE,
+  payload: {},
 });
 
 export const setInitState = (): SetInitStateAction => ({
   type: SET_INIT_STATE,
+  payload: {},
 });
 
 export const setSuccessState = (): SetSuccessStateAction => ({
   type: SET_SUCCESS_STATE,
+  payload: {},
 });
 
 export const setReadyState = (): SetReadyStateAction => ({
   type: SET_READY_STATE,
+  payload: {},
 });
